@@ -412,7 +412,8 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                                       TextButton(
                                                         child: Text("Tamam"),
                                                         onPressed: () {
-                                                          Navigator.of(context).pop(); // Dialogu kapatır
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>MainSayfa(),));
+                                                          // Dialogu kapatır
                                                         },
                                                       ),
                                                     ],

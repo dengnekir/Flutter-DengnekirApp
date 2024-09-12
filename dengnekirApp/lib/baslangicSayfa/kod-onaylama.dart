@@ -299,9 +299,8 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                                           String mail = tfMail.text;
                                           String phone = tfPhone.text;
                                           print("Email Kodu:$mail ve Telefon Kodu:$phone dir");
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                                              baslangicLogin(),
-                                          ));
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>MainSayfa(),));
+
                                         }
                                       },
                                       backgroundColor: Colors.white54,

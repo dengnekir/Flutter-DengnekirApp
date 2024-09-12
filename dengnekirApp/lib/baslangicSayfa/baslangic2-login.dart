@@ -134,6 +134,7 @@ var tfpassword=TextEditingController();//sifre islemleri
                                             String name=tfname.text;
                                             String pasw=tfpassword.text;
                                             print("Kullanıcı Adı:$name ve Şifresi $pasw");
+                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>MainSayfa(),));
                                           }
                                         },
                                         backgroundColor: Colors.black,
