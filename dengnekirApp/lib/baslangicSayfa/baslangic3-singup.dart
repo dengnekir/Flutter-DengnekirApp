@@ -289,6 +289,10 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                             if(tfgirdisi!.isEmpty){
                                               return "Telefon Numaranızı Giriniz";
                                             }
+                                            if (_selectedCountryCode=='+90'&&tfgirdisi.isNotEmpty && tfgirdisi[0] != '5' ) {
+                                              return "Geçersiz numara";
+                                            }
+
                                             if (tfgirdisi.length != 10) {
                                               return "Telefon Numarası 10 Karakterdir";
                                             }

@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../MainSayfa/AnaSayfa.dart';
+
 class baslangicLogin extends StatelessWidget {
 var formkey=GlobalKey<FormState>();//key anahtarı
 var tfname=TextEditingController();//kullanıcı işlemleri

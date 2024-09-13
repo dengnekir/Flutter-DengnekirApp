@@ -3,6 +3,8 @@ import 'package:dengnekirapp/baslangicSayfa/baslangicOop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import '../MainSayfa/AnaSayfa.dart';
 class sifreYenileme extends StatefulWidget {
 
   @override
@@ -225,6 +227,10 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                                             if(tfgirdisi!.isEmpty){
                                                               return "Lütfen Telefon Numaranızı Giriniz";
                                                             }
+                                                            if (_selectedCountryCode=='+90'&&tfgirdisi.isNotEmpty && tfgirdisi[0] != '5') {
+                                                              return "Geçersiz numara";
+                                                            }
+
                                                             if (tfgirdisi.length != 10) {
                                                               return "Telefon Numarası 10 Karakterdir";
                                                             }

@@ -5,6 +5,8 @@ import 'package:dengnekirapp/baslangicSayfa/baslangic2-login.dart';
 import 'package:dengnekirapp/baslangicSayfa/baslangicOop.dart';
 import 'package:flutter/widgets.dart';
 
+import '../MainSayfa/AnaSayfa.dart';
+
 class kodOnaylama extends StatefulWidget {
   final VerificationData data; // Constructor'da kullanılacak baslangicooptan bilgi alır
 
