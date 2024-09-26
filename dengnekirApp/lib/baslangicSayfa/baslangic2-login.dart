@@ -1,11 +1,12 @@
-import 'package:dengnekirapp/baslangicSayfa/baslangic2-sifreunutma.dart';
-import 'package:dengnekirapp/baslangicSayfa/baslangic3-singup.dart';
-import 'package:dengnekirapp/baslangicSayfa/baslangicOop.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../MainSayfa/AnaSayfa.dart';
+import 'baslangic2-sifreunutma.dart';
+import 'baslangic3-singup.dart';
+import 'baslangicOop.dart';
 
 class baslangicLogin extends StatelessWidget {
 var formkey=GlobalKey<FormState>();//key anahtarı

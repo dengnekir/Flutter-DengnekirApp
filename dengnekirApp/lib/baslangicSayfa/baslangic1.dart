@@ -1,9 +1,10 @@
 
-import 'package:dengnekirapp/baslangicSayfa/baslangic2-login.dart';
-import 'package:dengnekirapp/baslangicSayfa/baslangicOop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'baslangic2-login.dart';
+import 'baslangicOop.dart';
 
 void main() {
   runApp(const MyDengnekirApp());
@@ -79,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         //AÇIKLAMA
                         Padding(
                           padding: const EdgeInsets.only(top: 15,bottom: 35),
-                          child: Text("Gezintiye Başlayalım",
+                          child: Text("Your journey, your story",
                           style: TextStyle(
                             fontSize: 20
                           ),
@@ -116,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(builder: (context) => baslangicLogin()),
                               );
                             },
-                            backgroundColor: Colors.purple.shade200,
+                            backgroundColor: Colors.black,
                             textColor: Colors.white,
                             borderColor: Colors.black87,
                             elevation: 5,

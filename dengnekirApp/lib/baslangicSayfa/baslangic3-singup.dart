@@ -1,6 +1,6 @@
-import 'package:dengnekirapp/baslangicSayfa/baslangic2-login.dart';
-import 'package:dengnekirapp/baslangicSayfa/baslangicOop.dart';
-import 'package:dengnekirapp/baslangicSayfa/kod-onaylama.dart';
+import 'package:Vistopia/baslangicSayfa/baslangic2-login.dart';
+import 'package:Vistopia/baslangicSayfa/baslangicOop.dart';
+import 'package:Vistopia/baslangicSayfa/kod-onaylama.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

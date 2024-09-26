@@ -1,9 +1,13 @@
-import 'package:dengnekirapp/MainSayfa/Main-Home-Index.dart';
+
+
+import 'package:Vistopia/MainSayfa/Main-Location.dart';
 import 'package:flutter/material.dart';
-import 'package:dengnekirapp/MainSayfa/Main-Chat.dart';
-import 'package:dengnekirapp/MainSayfa/Main-Location.dart';
-import 'package:dengnekirapp/MainSayfa/Main-Personel.dart';
-import 'package:dengnekirapp/MainSayfa/Main-Search.dart';
+
+import 'Main-Chat.dart';
+import 'Main-Home-Index.dart';
+import 'Main-Personel.dart';
+import 'Main-Search.dart';
+
 
 void main() {
   runApp(const MainSayfa());
@@ -17,7 +21,7 @@ class MainSayfa extends StatelessWidget {
     return MaterialApp(
       title: 'Dengnekir',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white70),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Dengnekir'),
@@ -66,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
       //acılacak sayfa listesi
       body: sayfaListesi[secilenIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -108,8 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         type: BottomNavigationBarType.fixed,//arkplan renginin değişmesini sağlar
-        backgroundColor: Colors.black54,//arksplan rengi
-        selectedItemColor: Colors.purple,//secili ikon rengi
+        backgroundColor:Colors.black, //arksplan rengi
+        selectedItemColor: Colors.white70,//secili ikon rengi
         unselectedItemColor: Colors.white,//secili olmayan ikon rengi
         currentIndex: secilenIndex,//sayfalar arası baglantı ile bottom bar baglantı noktası
         onTap: (index) => _onIconTapped(index),

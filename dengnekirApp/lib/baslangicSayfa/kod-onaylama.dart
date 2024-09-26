@@ -1,8 +1,8 @@
 import 'dart:async';
+import 'package:Vistopia/baslangicSayfa/baslangicOop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dengnekirapp/baslangicSayfa/baslangic2-login.dart';
-import 'package:dengnekirapp/baslangicSayfa/baslangicOop.dart';
+
 import 'package:flutter/widgets.dart';
 
 import '../MainSayfa/AnaSayfa.dart';
@@ -318,6 +318,7 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                                   child: GestureDetector(
                                     onTap: () {
                                       print("anasayfaya onaylanmadan geçiş yapıldı");
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MainSayfa()));
                                     },
                                     child: Text(
                                       "Daha Sonra Hatırlat",

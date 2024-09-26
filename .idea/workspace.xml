@@ -5,26 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ab05115-9e1a-4ee2-b666-8182d30dfa57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Chat.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Home-Index.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Location.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Personel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Flutter-DengnekirApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Flutter-DengnekirApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161819.png" beforeDir="false" afterPath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161819-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161829.png" beforeDir="false" afterPath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161829-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161836.png" beforeDir="false" afterPath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161836-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161843.png" beforeDir="false" afterPath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161843-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161854.png" beforeDir="false" afterPath="$PROJECT_DIR$/Ekran görüntüsü 2024-09-09 161854-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/image/3KodGönderme.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/3KodGönderme.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/image/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/image/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/AnaSayfa.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/AnaSayfa.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Personel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/Main-Personel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic1.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic2-login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic2-login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic2-sifreunutma.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic2-sifreunutma.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic3-singup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangic3-singup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangicOop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/baslangicOop.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/kod-onaylama.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/lib/baslangicSayfa/kod-onaylama.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dengnekirApp/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dengnekirApp/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/dengnekirApp/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +83,11 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\usluf\Desktop\ym2\Flutter-DengnekirApp\dengnekirApp\lib" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\usluf\Desktop\ym2\Flutter-DengnekirApp\dengnekirApp\ios" />
+    </key>
   </component>
-  <component name="RunManager" selected="Flutter.AnaSayfa.dart">
+  <component name="RunManager" selected="Flutter.baslangic1.dart">
     <configuration name="AnaSayfa.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/dengnekirApp/lib/MainSayfa/AnaSayfa.dart" />
       <method v="2" />
@@ -79,8 +98,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Flutter.AnaSayfa.dart" />
         <item itemvalue="Flutter.baslangic1.dart" />
+        <item itemvalue="Flutter.AnaSayfa.dart" />
       </list>
     </recent_temporary>
   </component>
