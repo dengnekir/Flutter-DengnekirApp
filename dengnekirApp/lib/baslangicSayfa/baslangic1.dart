@@ -50,26 +50,29 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Positioned.fill(
                   child:
-                    Image.asset('image/Logo.png',
+                    Image.asset('image/1-1.png',
                     fit: BoxFit.fill,//image tüm ekrana doldurma işlemi
                     ),
                 ),
                 Positioned(//6.4> inç ekranlar için yuksekten ayarlama
                   left: 0,
                   right: 0,
-                  top: 120,
+                  top: 150,
                     child:
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         //LOGO AND LOGO STYLE
                         SizedBox(
-                            height: 250,
-                            width: 250,
+                            height: 150,
+                            width: 150,
                             child: Image.asset("image/logo.png")
                         ),
+                        SizedBox(
+                          height: 70,
+                        ),
                         //APP NAME AND NAME STYLE
-                        Text("Dengnekir",
+                        Text("Vistopia",
                         style:
                         TextStyle(
                             fontFamily: 'Margarine',
