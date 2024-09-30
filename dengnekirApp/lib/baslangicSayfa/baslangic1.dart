@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Positioned.fill(
                   child:
-                    Image.asset('image/1-1.png',
+                    Image.asset('image/1.png',
                     fit: BoxFit.fill,//image tüm ekrana doldurma işlemi
                     ),
                 ),
