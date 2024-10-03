@@ -75,7 +75,7 @@ class _kodOnaylamaState extends State<kodOnaylama> {
               children: [
                 Positioned.fill(
                   child: Image.asset(
-                    'image/3KodGönderme.png',
+                    'image/1.png',
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -88,8 +88,8 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                       Align(
                         alignment: Alignment.topCenter,
                         child: SizedBox(
-                          height: 200,
-                          width: 200,
+                          height: 150,
+                          width: 150,
                           child: Image.asset("image/logo.png"),
                         ),
                       ),
@@ -117,7 +117,7 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                       "${widget.data.userName}",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: "Margarine",
+                        fontFamily: "Rowdies",
                         fontSize: 30,),
                     ),
                     Align(
@@ -207,6 +207,9 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                                     },
                                   ),
                                 ),
+                                SizedBox(
+                                  height: 20,
+                                ),
                                 // Telefon
                                 Align(
                                   alignment: Alignment.topLeft,
@@ -245,7 +248,7 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                                     controller: tfPhone,
                                     decoration: customInputDecoration(
                                       Filcolorr: Colors.white,
-                                      colorr: Colors.white,
+                                      colorr: Colors.purple,
 
                                       passwordd: GestureDetector(
                                         child: Padding(
@@ -305,8 +308,8 @@ class _kodOnaylamaState extends State<kodOnaylama> {
 
                                         }
                                       },
-                                      backgroundColor: Colors.white54,
-                                      textColor: Colors.black,
+                                      backgroundColor: Colors.black,
+                                      textColor: Colors.white,
                                       borderColor: Colors.black87,
                                       elevation: 1,
                                       borderRadius: 16,

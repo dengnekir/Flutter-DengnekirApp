@@ -1,6 +1,6 @@
 import 'package:Vistopia/baslangicSayfa/baslangic2-login.dart';
 import 'package:Vistopia/baslangicSayfa/baslangicOop.dart';
-import 'package:Vistopia/baslangicSayfa/kod-onaylama.dart';
+import 'package:Vistopia/baslangicSayfa/baslangic3-kodOnaylama.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -72,43 +72,30 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                   ),
                 ),
 
-                      Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 100.0),
-                              child: Text("Yeni Hesap",
-                              style: TextStyle(
-                                fontFamily: "Rowdies",
-                                fontSize: 55
-                              ),),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("K a y ı t   O l"),
-                            ),
-                            //LOGO
-                            Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment:MainAxisAlignment.end,
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: SizedBox(
-                                  height: 220,
-                                  width: 220,
-                                  child: Image.asset("image/logo.png")),
-                            ),
-                          ],
-                        ),
-                          ],
-                        ),
-                      ),
+
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Spacer(),
+                    Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 50.0),
+                            child: Text("Yeni Hesap",
+                              style: TextStyle(
+                                  fontFamily: "Rowdies",
+                                  fontSize: 55
+                              ),),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("K a y ı t   O l"),
+                          ),
+                        ],
+                      ),
+                    ),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
@@ -136,7 +123,13 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                         return "Kullanıcı Adınızı Giriniz";
                                       }
                                       if(tfgirdisi.length>15){
-                                        return "Kullanıcı Adı 15 Karakterden Uzun Olamaz";
+                                        return "Kullanıcı Adı 15 karakterden Uzun Olamaz";
+                                      }
+                                      // Kullanıcı adında olmaması gereken karakterleri kontrol eden RegExp
+                                      final regex = RegExp(r'[!?\^+%&/|-]');
+
+                                      if (regex.hasMatch(tfgirdisi)) {
+                                        return "Kullanıcı adınızda ! ? ' ^ + % & / - | karakterler olmamalı";
                                       }
                                       return null;
                                     },
@@ -332,8 +325,8 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                         }
 
                                       },
-                                      backgroundColor: Colors.purpleAccent,
-                                      textColor: Colors.white70,
+                                      backgroundColor: Colors.black,
+                                      textColor: Colors.white,
                                       borderColor: Colors.black87,
                                       elevation: 5,
                                       borderRadius: 30,

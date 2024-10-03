@@ -83,14 +83,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         //AÇIKLAMA
                         Padding(
                           padding: const EdgeInsets.only(top: 15,bottom: 35),
-                          child: Text("Your journey, your story",
+                          child: Text("Senin Yolculuğun, Senin Hikayen",
                           style: TextStyle(
                             fontSize: 20
                           ),
                           ),
                         ),
                         //AÇIKLAMA 2 AND AÇIKLAMA FONTFAMİLY
-                        Text("Welcome",
+                        Text("Hoşgeldin",
                           style:
                           TextStyle(
                             fontFamily: "Rowdies",

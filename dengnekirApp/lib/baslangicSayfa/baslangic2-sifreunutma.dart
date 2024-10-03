@@ -2,42 +2,45 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../MainSayfa/AnaSayfa.dart';
+
+import 'baslangic2-SifreDegistirme.dart';
 import 'baslangic3-singup.dart';
 import 'baslangicOop.dart';
 class sifreYenileme extends StatefulWidget {
 
   @override
-
   State<sifreYenileme> createState() => _sifreyenilemeState();
 }
-
-class _sifreyenilemeState extends State<sifreYenileme> {
+//AutomaticKeepAliveClientMixin amacı geri gelince her seyin yerli yerince olmasını sağlar
+class _sifreyenilemeState extends State<sifreYenileme> with AutomaticKeepAliveClientMixin {
   var formKey1 = GlobalKey<FormState>(); // Kullanıcı adı formu için key
-  var formKey2 = GlobalKey<FormState>(); // Kod ve şifre formu için key
-  var tfKullanici = TextEditingController(); // Kullanıcı adı kontrolcüsü
-  var tfKod = TextEditingController(); // Kod kontrolcüsü
-  var tfPassword = TextEditingController(); // Şifre kontrolcüsü
-  var tfPassword2 = TextEditingController(); // Şifre onay kontrolcüsü
-  var tfmail = TextEditingController(); // mail kod kontrolcüsü
-  var tfphone = TextEditingController(); // telefon kod kontrolcüsü
+  var formKey2 = GlobalKey<FormState>(); // Kod formu için key
+  var tfKullanici = TextEditingController();
+  var tfmail = TextEditingController();
+  var tfphone = TextEditingController();
+  var tfKod = TextEditingController();
   String? _selectedCountryCode = '+90'; // Varsayılan ülke kodu
-  //KOD SAYFASINA ERİŞİM
+
+  // Durumu korumak için gerekli
+  @override
+  bool get wantKeepAlive => true;
+
   void _navigateToCountryCodeSearch() async {
-    final selectedCode = await Navigator.push(//SECİLECEK KOD
+    final selectedCode = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => CountryCodeSearch()),
     );
 
     if (selectedCode != null) {
       setState(() {
-        _selectedCountryCode = selectedCode; // SECİLEN KODU VARSAYILAN KOD YAPMA
-        print("seçilen ülkemiz:${_selectedCountryCode}");
+        _selectedCountryCode = selectedCode;
       });
     }
   }
 
+
   @override
+
   Widget build(BuildContext context) {
     return DefaultTabController(//SAYFAYI TAB YAPMA
       length: 3,//TAB UZUNLUĞU 3
@@ -50,23 +53,25 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                 width: MediaQuery.of(context).size.width,
                 child: Stack(
                   children: [
+
                     //arkaplan resmi
-                    Image.asset(
-                      'image/2SifreYenileme.png',
-                      fit: BoxFit.cover,
+                    Positioned.fill(
+                      child: Image.asset(
+                        'image/2SifreYenileme.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    //dengnekir ismi
-                    Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          "Dengnekir",
-                          style: TextStyle(
-                            fontFamily: "Margarine",
-                            fontSize: 30,
+                    //logo hizalama
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                              height: 80,
+                              width: 80,
+                              child: Image.asset("image/logo.png")
                           ),
-                        ),
+                        ],
                       ),
                     ),
                     Column(
@@ -87,14 +92,15 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(16.0),
                                       border: Border.all(
-                                        color: Colors.deepPurpleAccent,
+                                        color: Colors.deepPurple,
                                         width: 2.0,
                                       ),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.indigo.withOpacity(0.4),
-                                          blurRadius: 16.0,
-                                          offset: Offset(0, 7),
+                                          blurRadius: 16.0,//golge bulanıklılıgı
+                                          spreadRadius: 3, // Gölgenin yayılma alanı
+                                          offset: Offset(0, 9),
                                         ),
                                       ],
                                     ),
@@ -145,9 +151,18 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                                       color: Colors.grey[600],
                                                     ),
                                                   ),
-                                                  validator: (value) {
-                                                    if (value!.isEmpty) {
-                                                      return "Kullanıcı adınızı giriniz";
+                                                  validator: (value){
+                                                    if(value!.isEmpty){
+                                                      return "Kullanıcı Adınızı Giriniz";
+                                                    }
+                                                    if(value.length>15){
+                                                      return "Kullanıcı Adı 15 karakterden Uzun Olamaz";
+                                                    }
+                                                    // Kullanıcı adında olmaması gereken karakterleri kontrol eden RegExp
+                                                    final regex = RegExp(r'[!?\^+%&/|-]');
+
+                                                    if (regex.hasMatch(value)) {
+                                                      return "Kullanıcı adınızda ! ? ' ^ + % & / - | karakterler olmamalı";
                                                     }
                                                     return null;
                                                   },
@@ -171,9 +186,12 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                                       color: Colors.grey[600],
                                                     ),
                                                   ),
-                                                  validator: (value) {
-                                                    if (value!.isEmpty) {
-                                                      return "E-posta adresinizi giriniz";
+                                                  validator:(value){
+                                                    if(value!.isEmpty){
+                                                      return "Lütfen Email Giriniz";
+                                                    }
+                                                    if(!value.contains("@")){
+                                                      return "Lütfen Geçerli Bir E-Mail Adresi Giriniz";
                                                     }
                                                     return null;
                                                   },
@@ -223,18 +241,18 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                                               color: Colors.grey[600],
                                                             ),
                                                           ),
-                                                          validator:(tfgirdisi){
-                                                            if(tfgirdisi!.isEmpty){
+                                                          validator:(value){
+                                                            if(value!.isEmpty){
                                                               return "Lütfen Telefon Numaranızı Giriniz";
                                                             }
-                                                            if (_selectedCountryCode=='+90'&&tfgirdisi.isNotEmpty && tfgirdisi[0] != '5') {
+                                                            if (_selectedCountryCode=='+90'&&value.isNotEmpty && value[0] != '5') {
                                                               return "Geçersiz numara";
                                                             }
 
-                                                            if (tfgirdisi.length != 10) {
+                                                            if (value.length != 10) {
                                                               return "Telefon Numarası 10 Karakterdir";
                                                             }
-                                                            if (!RegExp(r'^[0-9]+$').hasMatch(tfgirdisi)) {
+                                                            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
                                                               return "Sadece Rakam Girilmelidir"; // Harf veya özel karakter kontrolü
                                                             }
                                                             return null;
@@ -271,13 +289,17 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                                       TextButton(
                                                         child: Text("Tamam"),
                                                         onPressed: () {
-                                                          Navigator.of(context)
-                                                              .pop();
+                                                          Navigator.pop(context);
+                                                          print("kullanıcının kodu yazması bekleniyor");
                                                         },
                                                       ),
+
                                                     ],
+
                                                   );
+
                                                 },
+
                                               );
                                               String kullanici =
                                                   tfKullanici.text;
@@ -288,8 +310,10 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                               print(
                                                   "Kullanıcı Adı: $kullanici, mail:$mail, telefon:$telefon");
                                               print("Kod Gönderiliyor");
-                                            } else {
-                                              ScaffoldMessenger.of(context)
+
+                                            }
+
+                                            else {ScaffoldMessenger.of(context)
                                                   .showSnackBar(
                                                 SnackBar(
                                                   content: Text(
@@ -307,195 +331,145 @@ class _sifreyenilemeState extends State<sifreYenileme> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 10), // Araya boşluk ekledim
-                                // Kod ve şifre formu
-                                //gelen kod buraya yazılır
-                                Form(
-                                  key: formKey2,
-                                  child: Container(
-                                    width: 400,
-                                    height: 450,
-                                    padding: EdgeInsets.all(16.0),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                      border: Border.all(
-                                        color: Colors.deepPurpleAccent,
-                                        width: 2.0,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.indigo.withOpacity(0.4), // Container arkaplan opaklık
-                                          blurRadius: 16.0,
-                                          offset: Offset(0, 7),//golge boyutu
-                                        ),
-                                      ],
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: TextFormField(
-                                            controller: tfKod,
-                                            //baslangicoop sayfasından inputdecoratiın
-                                            decoration: customInputDecoration(
-                                              Filcolorr: Colors.white,
-                                              colorr: Colors.white,
-                                              prefixIcon: Icons.code, // Name simgesi başa eklenir
-                                              hintText: "Kod",
-                                              hintStyle: TextStyle(
-                                                color: Colors.grey[600], // HintText rengi
-                                              ),
-                                            ),
-                                            validator: (value) {
-                                              if (value!.isEmpty) {
-                                                return "Kod boş olamaz";
-                                              }
-                                              return null;
-                                            },
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: TextFormField(
-                                            controller: tfPassword,
-                                            obscureText: true,
-                                            //baslangicoop sayfasından inputdecoratiın
-                                            decoration: customInputDecoration(
-                                              Filcolorr: Colors.white,
-                                              colorr: Colors.white,
-                                              prefixIcon: Icons.password_outlined, // Name simgesi başa eklenir
-                                              hintText: "Şifre",
-                                              hintStyle: TextStyle(
-                                                color: Colors.grey[600], // HintText rengi
-                                              ),
-                                            ),
-                                            validator: (value) {
-                                              if (value!.isEmpty) {
-                                                return "Şifre boş olamaz";
-                                              }
-                                              return null;
-                                            },
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: TextFormField(
-                                            controller: tfPassword2,
-                                            obscureText: true,//sifre yıldızlı gozuksun
-                                            //baslangicoop sayfasından inputdecoratiın
-                                            decoration: customInputDecoration(
-                                              colorr: Colors.white,
-                                              Filcolorr: Colors.white,
-                                              prefixIcon: Icons.password_outlined, // Name simgesi başa eklenir
-                                              hintText: "Şifreyi Onayla",
-                                              hintStyle: TextStyle(
-                                                color: Colors.grey[600], // HintText rengi
-                                              ),
-                                            ),
-                                            validator: (value) {
-                                              if (value!.isEmpty) {
-                                                return "Şifre boş olamaz";
-                                              }
-                                              if (value != tfPassword.text) {
-                                                return "Şifreler eşleşmiyor!";
-                                              }
-                                              return null;
-                                            },
-                                          ),
-                                        ),
-                                        //baslangicoop button
-                                        CustomButton(
-                                          text: "Şifreyi Değiştir",
-                                          onPressed: () {
-                                            if (formKey2.currentState!.validate()) {
-                                              showDialog(
-                                                context: context,
-                                                builder: (BuildContext context) {
-                                                  return AlertDialog(
-                                                    title: Text("Başarılı"),
-                                                    content: Text("Şifreniz başarıyla değiştirildi!"),
-                                                    actions: [
-                                                      TextButton(
-                                                        child: Text("Tamam"),
-                                                        onPressed: () {
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>MainSayfa(),));
-                                                          // Dialogu kapatır
-                                                        },
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-
-                                              String kod = tfKod.text;
-                                              String sifre = tfPassword.text;
-                                              print("Girilen Kod: $kod");
-                                              print("Yeni Şifre: $sifre");
-                                            }
-                                            if (tfKod.text.isEmpty || tfPassword.text.isEmpty || tfPassword2.text.isEmpty) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(
-                                                  content: Text("Lütfen tüm alanları doldurunuz!"),
-                                                  duration: Duration(seconds: 2),
-                                                  backgroundColor: Colors.deepPurpleAccent,
-                                                ),
-                                              );
-                                            }
-                                            if (tfPassword.text != tfPassword2) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(
-                                                  content: Text("Lütfen Şifrelerin Eşleştiğinden Emin Olun!"),
-                                                  duration: Duration(seconds: 2),
-                                                  backgroundColor: Colors.deepPurpleAccent,
-                                                ),
-                                              );
-                                            }
-                                          },
-                                          backgroundColor: Colors.white38,
-                                          textColor: Colors.white,
-                                          borderRadius: 30,
-                                          fontSize: 16,
-                                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Hesabın Yok Mu?",
-                            style: TextStyle(
-                              fontFamily: "Rowdies",
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Center(
+                          child: Form(
+                            key: formKey2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Container(
+
+                                width: 400,
+                                height: 200,
+                                padding: EdgeInsets.all(16.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  border: Border.all(
+                                    color: Colors.deepPurpleAccent,
+                                    width: 2.0,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.indigo.withOpacity(0.4), // Container arkaplan opaklık
+                                      blurRadius: 16.0,
+                                      offset: Offset(0, 7),//golge boyutu
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        controller: tfKod,
+                                        //baslangicoop sayfasından inputdecoratiın
+                                        decoration: customInputDecoration(
+                                          Filcolorr: Colors.white,
+                                          colorr: Colors.white,
+                                          prefixIcon: Icons.code, // Name simgesi başa eklenir
+                                          hintText: "Kod",
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey[600], // HintText rengi
+                                          ),
+                                        ),
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
+                                            return "Kod boş olamaz";
+                                          }
+                                          if(value.length!=6){
+                                            return "Kod & Haneli Olmalıdır.";
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    //baslangicoop button
+                                    CustomButton(
+                                      text: "Şifreyi Değiştir",
+                                      onPressed: () {
+                                        if (formKey2.currentState!.validate()) {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text("Başarılı"),
+                                                content: Text("Kod Alındı!"),
+                                                actions: [
+                                                  TextButton(
+                                                    child: Text("Tamam"),
+                                                    onPressed: () {
+                                                      print("sifre değiştirme sayfasına yonendiriliyor");
+                                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SifreUnutmaKod(),));
+                                                      // Dialogu kapatır
+                                                    },
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          String kod = tfKod.text;
+                                          print("Girilen Kod: $kod");
+
+                                        }
+                                        if (tfKod.text.isEmpty) {
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text("Kodu doldurunuz!"),
+                                              duration: Duration(seconds: 2),
+                                              backgroundColor: Colors.deepPurpleAccent,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      backgroundColor: Colors.white38,
+                                      textColor: Colors.white,
+                                      borderRadius: 30,
+                                      fontSize: 16,
+                                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              print("Yeni Hesap Oluştur Sayfasına yönlendiriliyor");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => baslangicSingup()),
-                              );
-                            },
-                            child: Text("Yeni Hesap Oluştur",style: TextStyle(
-                              color: Colors.purple
-                            ),),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "Hesabın Yok Mu?",
+                                style: TextStyle(
+                                  fontFamily: "Rowdies",
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  print("Yeni Hesap Oluştur Sayfasına yönlendiriliyor");
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                                  baslangicSingup(),
+                                  ));
+                                },
+                                child: Text("Yeni Hesap Oluştur",style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16
+                                ),),
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                              height: 80,
-                              width: 80,
-                              child: Image.asset("image/logo.png")),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
 
                   ],

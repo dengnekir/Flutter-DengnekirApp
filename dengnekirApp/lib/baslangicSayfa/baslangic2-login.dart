@@ -42,8 +42,8 @@ var tfpassword=TextEditingController();//sifre islemleri
                       Align(
                         alignment: Alignment.topRight,
                         child:SizedBox(
-                              height: 200,
-                              width: 200,
+                              height: 100,
+                              width: 100,
                               child: Image.asset("image/logo.png")
                         ),
                       ),
@@ -85,6 +85,13 @@ var tfpassword=TextEditingController();//sifre islemleri
                                       if(tfgirdisi!.isEmpty){
                                         return "Kullanıcı Adınızı Giriniz";
                                       }
+
+                                      // Kullanıcı adında olmaması gereken karakterleri kontrol eden RegExp
+                                      final regex = RegExp(r'[!?\^+%&/|-]');
+
+                                      if (regex.hasMatch(tfgirdisi)) {
+                                        return "Kullanıcı adınızda ! ? ' ^ + % & / - | karakterler olmamalı";
+                                      }
                                       return null;
                                     },
                                   ),
@@ -105,6 +112,19 @@ var tfpassword=TextEditingController();//sifre islemleri
                                         }
                                         if(tfgirdisi!.length<6){
                                           return "Şifre 6 Karakterden Küçük Olamaz";
+                                        }
+                                        bool hasUpperCase = tfgirdisi.contains(RegExp(r'[A-Z]'));
+                                        bool hasLowerCase = tfgirdisi.contains(RegExp(r'[a-z]'));
+                                        bool hasDigit = tfgirdisi.contains(RegExp(r'[0-9]'));
+
+                                        if (!hasUpperCase) {
+                                          return "Şifre en az bir büyük harf içermelidir";
+                                        }
+                                        if (!hasLowerCase) {
+                                          return "Şifre en az bir küçük harf içermelidir";
+                                        }
+                                        if (!hasDigit) {
+                                          return "Şifre en az bir rakam içermelidir";
                                         }
                                         return null;
                                       },
