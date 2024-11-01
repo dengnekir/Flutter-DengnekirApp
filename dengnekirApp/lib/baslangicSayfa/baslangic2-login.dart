@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -8,109 +7,129 @@ import 'baslangic2-sifreunutma.dart';
 import 'baslangic3-singup.dart';
 import 'baslangicOop.dart';
 
-class baslangicLogin extends StatelessWidget {
-var formkey=GlobalKey<FormState>();//key anahtarı
-var tfname=TextEditingController();//kullanıcı işlemleri
-var tfpassword=TextEditingController();//sifre islemleri
+class baslangicLogin extends StatefulWidget {
+  @override
+  _baslangicLoginState createState() => _baslangicLoginState();
+}
+
+class _baslangicLoginState extends State<baslangicLogin> {
+  final formkey = GlobalKey<FormState>();
+  final tfname = TextEditingController();
+  final tfpassword = TextEditingController();
+  bool hasError = false;
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      //6.4< inç ekranlar için kaydırma butonu
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height, // Ekranın tamamını kaplamasını sağlar
+          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Center(
-            child:
-                //İMAGE USTUNE WİDGET
-            Stack(
+            child: Stack(
               children: [
                 Positioned.fill(
-                  child:
-                  Image.asset('image/2.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                //LOGO
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  child:
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Align(
-                        alignment: Alignment.topRight,
-                        child:SizedBox(
-                              height: 100,
-                              width: 100,
-                              child: Image.asset("image/logo.png")
-                        ),
-                      ),
-                    ],
+                  child: Image.asset(
+                    'image/1.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 200.0), // Formun yukarıdan 00 piksel aşağıya inmesini sağlar
-                    Text("Merhaba"
-                    ,style: TextStyle(
-                        fontFamily: "Rowdies",
-                        fontSize: 30,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: screenWidth * 0.07),
+                            child: Text(
+                              "Giriş Yap",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "Rowdies",
+                                fontSize: screenWidth * 0.09,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text("Devam Etmek İçin Oturum Açınız"),
-                    //FORM İŞLEMLERİ LOGİN
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Form(
                           key: formkey,
-                            child:Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  TextFormField(
-                                    controller: tfname,
-                                    //BASLANGİC.OOP.DART
-                                    decoration: customInputDecoration(
-                                      Filcolorr: Colors.white,
-                                      colorr: Colors.purple,
-                                      prefixIcon:Icons.alternate_email, // name simgesi başa eklenir
-                                      hintText: "Kullanıcı Adı",
-                                    ),
-                                    validator: (tfgirdisi){
-                                      if(tfgirdisi!.isEmpty){
-                                        return "Kullanıcı Adınızı Giriniz";
-                                      }
-
-                                      // Kullanıcı adında olmaması gereken karakterleri kontrol eden RegExp
-                                      final regex = RegExp(r'[!?\^+%&/|-]');
-
-                                      if (regex.hasMatch(tfgirdisi)) {
-                                        return "Kullanıcı adınızda ! ? ' ^ + % & / - | karakterler olmamalı";
-                                      }
-                                      return null;
-                                    },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  cursorColor: Colors.grey,
+                                  style: TextStyle(
+                                    color: Colors.white,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 20.0,bottom: 5.0),
+                                  controller: tfname,
+                                  decoration: customInputDecoration(
+                                    Filcolorr: Colors.transparent,
+                                    colorr: Colors.white,
+                                    suffixIcon: Icons.person,
+                                    hintText: "Kullanıcı Adı",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                    ),
+                                    hasError: hasError,
+                                  ),
+                                  validator: (tfgirdisi) {
+                                    if (tfgirdisi!.isEmpty) {
+                                      setState(() => hasError = true);
+                                      return "Kullanıcı Adınızı Giriniz";
+                                    }
+
+                                    final regex = RegExp(r'[!?\^+%&/|-]');
+                                    if (regex.hasMatch(tfgirdisi)) {
+                                      setState(() => hasError = true);
+                                      return "Kullanıcı adınızda ! ? ' ^ + % & / - | karakterler olmamalı";
+                                    }
+
+                                    setState(() => hasError = false);
+                                    return null;
+                                  },
+                                  onChanged: (value) {
+                                    setState(() {
+                                      hasError = RegExp(r'[!?\^+%&/|-]').hasMatch(value);
+                                    });
+                                  },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20.0, bottom: 5.0),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20.0, bottom: 5.0),
                                     child: TextFormField(
+                                      cursorColor: Colors.grey,
+                                      style: TextStyle(color: Colors.white),
                                       controller: tfpassword,
                                       decoration: customInputDecoration(
-                                        Filcolorr: Colors.white,
-                                        colorr: Colors.purple,
-                                        prefixIcon: Icons.lock, // password simgesi başa eklenir
+                                        Filcolorr: Colors.transparent,
+                                        colorr: Colors.white,
+                                        suffixIcon: Icons.key,
                                         hintText: "Şifre Giriniz",
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                        hasError: hasError, // Hata durumunu geçiriyoruz
                                       ),
                                       obscureText: true,
-                                      validator:(tfgirdisi){
-                                        if(tfgirdisi!.isEmpty){
+                                      validator: (tfgirdisi) {
+                                        if (tfgirdisi == null || tfgirdisi.isEmpty) {
+                                          setState(() => hasError = true); // Hata durumunu true yap
                                           return "Lütfen Şifre Giriniz";
                                         }
-                                        if(tfgirdisi!.length<6){
+                                        if (tfgirdisi.length < 6) {
+                                          setState(() => hasError = true); // Hata durumunu true yap
                                           return "Şifre 6 Karakterden Küçük Olamaz";
                                         }
                                         bool hasUpperCase = tfgirdisi.contains(RegExp(r'[A-Z]'));
@@ -118,77 +137,104 @@ var tfpassword=TextEditingController();//sifre islemleri
                                         bool hasDigit = tfgirdisi.contains(RegExp(r'[0-9]'));
 
                                         if (!hasUpperCase) {
+                                          setState(() => hasError = true); // Hata durumunu true yap
                                           return "Şifre en az bir büyük harf içermelidir";
                                         }
                                         if (!hasLowerCase) {
+                                          setState(() => hasError = true); // Hata durumunu true yap
                                           return "Şifre en az bir küçük harf içermelidir";
                                         }
                                         if (!hasDigit) {
+                                          setState(() => hasError = true); // Hata durumunu true yap
                                           return "Şifre en az bir rakam içermelidir";
                                         }
-                                        return null;
+                                        setState(() => hasError = false); // Hata yoksa hasError'ı false yap
+                                        return null; // Geçerli şifre
                                       },
                                     ),
-                                  ),
-                                  //SİFRE UNUTMA
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: GestureDetector(
-                                      onTap: (){
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)
-                                        => sifreYenileme(),
-                                        ));
-                                        print("Şifre değiştirme ekranına yonlendiriliyor");
-                                      },
-                                      child: Text("Şifremi unuttum"),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    //GİRİŞ BUTONU KONTROL KISMI
-                                    child:CustomButton(
-                                        text: "Giriş",
-                                        onPressed:(){
-                                          //key anahtarları buraya gelir ve doğrulama işlemleri olur
-                                          //yani karakter uzunluğu 6 yı geciyor mu mesela
-                                          print("Anasayfaya Geçiş izni kontrol ediliyor");
-                                          bool kontrolsonucu=formkey.currentState!.validate();//TEXTFİELD KONTROL
-                                          if(kontrolsonucu){
-                                            String name=tfname.text;
-                                            String pasw=tfpassword.text;
-                                            print("Kullanıcı Adı:$name ve Şifresi $pasw");
-                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>MainSayfa(),));
-                                          }
-                                        },
-                                        backgroundColor: Colors.black,
-                                        textColor: Colors.white,
-                                        borderColor: Colors.black87,
-                                        elevation: 5,
-                                        borderRadius: 30,
-                                      ),
 
+                                  )
+
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: screenHeight * 0.05),
+                                  child: SizedBox(
+                                    width: screenWidth * 1.1,
+                                    child: CustomButton(
+                                      text: "Giriş Yap",
+                                      onPressed: () {
+                                        bool kontrolsonucu = formkey.currentState!.validate();
+                                        if (kontrolsonucu) {
+                                          String name = tfname.text;
+                                          String pasw = tfpassword.text;
+                                          print("Kullanıcı Adı:$name ve Şifresi $pasw");
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => MainSayfa(),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      backgroundColor: Colors.teal,
+                                      textColor: Colors.white,
+                                      borderColor: Colors.black87,
+                                      elevation: 5,
+                                      borderRadius: 10,
+                                      fontSize: screenWidth * 0.05,
+                                    ),
                                   ),
-                                  Text("Hesabınız Yok Mu?",style: TextStyle(
-                                    color: Colors.black,
-                                  ),),
-                                  //baslangicoop button
-                                  CustomButton(
-                                    text: "Kayıt Ol!",
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => baslangicSingup()),
-                                      );
-                                      print("Sign Up Ekranına Geçiş Yapıldı");
-                                    },
-                                    backgroundColor: Colors.transparent,
-                                    textColor: Colors.black,
-                                    borderRadius: 30,
-                                    fontSize: 16,
-                                  ),
-                                ],
-                              ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => sifreYenileme(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          "Şifremi unuttum",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: screenWidth * 0.04,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => baslangicSingup(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          "Kayıt Ol",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: screenWidth * 0.04,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
+                          ),
                         ),
                       ),
                     ),

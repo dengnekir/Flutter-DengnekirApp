@@ -188,7 +188,7 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                                           }
                                         },
                                       ),
-                                      prefixIcon: Icons.email,
+                                      suffixIcon: Icons.email,
                                       hintText: "Mail Doğrulama Kodu",
                                       hintStyle: TextStyle(
                                         color: Colors.grey
@@ -270,7 +270,7 @@ class _kodOnaylamaState extends State<kodOnaylama> {
                                           }
                                         },
                                       ),
-                                      prefixIcon: Icons.phone_android,
+                                      suffixIcon: Icons.phone_android,
                                       hintText: "Telefon Doğrulama Kodu",
                                       hintStyle: TextStyle(
                                         color: Colors.grey

@@ -143,7 +143,7 @@ class _sifreyenilemeState extends State<sifreYenileme> with AutomaticKeepAliveCl
                                                   customInputDecoration(
                                                     Filcolorr: Colors.white,
                                                     colorr: Colors.white,
-                                                    prefixIcon: Icons
+                                                    suffixIcon: Icons
                                                         .alternate_email,
                                                     hintText:
                                                     "Kullanıcı Adı",
@@ -179,7 +179,7 @@ class _sifreyenilemeState extends State<sifreYenileme> with AutomaticKeepAliveCl
                                                   customInputDecoration(
                                                     Filcolorr: Colors.white,
                                                     colorr: Colors.white,
-                                                    prefixIcon:
+                                                    suffixIcon:
                                                     Icons.email_outlined,
                                                     hintText: "E-posta",
                                                     hintStyle: TextStyle(
@@ -235,7 +235,7 @@ class _sifreyenilemeState extends State<sifreYenileme> with AutomaticKeepAliveCl
                                                           decoration: customInputDecoration(
                                                             Filcolorr: Colors.white,
                                                             colorr: Colors.white,
-                                                            prefixIcon: Icons.phone_outlined,
+                                                            suffixIcon: Icons.phone_outlined,
                                                             hintText: "Telefon",
                                                             hintStyle: TextStyle(
                                                               color: Colors.grey[600],
@@ -374,7 +374,7 @@ class _sifreyenilemeState extends State<sifreYenileme> with AutomaticKeepAliveCl
                                         decoration: customInputDecoration(
                                           Filcolorr: Colors.white,
                                           colorr: Colors.white,
-                                          prefixIcon: Icons.code, // Name simgesi başa eklenir
+                                          suffixIcon: Icons.code, // Name simgesi başa eklenir
                                           hintText: "Kod",
                                           hintStyle: TextStyle(
                                             color: Colors.grey[600], // HintText rengi

@@ -115,7 +115,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     decoration: customInputDecoration(
                                       colorr: Colors.purple,
                                       Filcolorr: Colors.transparent,//arkaplan rengi
-                                      prefixIcon: Icons.person, // name simgesi başa eklenir
+                                      suffixIcon: Icons.person, // name simgesi başa eklenir
                                       hintText: "Kullanıcı Adı",
                                     ),
                                     validator: (tfgirdisi){
@@ -156,7 +156,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     });
                                     },
                                       ),
-                                      prefixIcon: Icons.lock, // password simgesi başa eklenir
+                                      suffixIcon: Icons.lock, // password simgesi başa eklenir
                                       hintText: "Şifre Giriniz",
                                     ),
                                     obscureText: _isObscure,//sifre gorunur veya gorunmez yapma
@@ -194,7 +194,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     decoration: customInputDecoration(
                                       Filcolorr: Colors.white,
                                       colorr: Colors.purple,
-                                      prefixIcon: Icons.alternate_email, // email simgesi başa eklenir
+                                      suffixIcon: Icons.alternate_email, // email simgesi başa eklenir
                                       hintText: "E-Mail Giriniz",
                                     ),
                                     validator:(tfgirdisi){
@@ -217,7 +217,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     decoration: customInputDecoration(
                                       Filcolorr: Colors.white,//arkaplan rengi
                                       colorr: Colors.purple,//error color
-                                      prefixIcon: Icons.calendar_month, // name simgesi başa eklenir
+                                      suffixIcon: Icons.calendar_month, // name simgesi başa eklenir
                                       hintText: "Doğum Tarihiniz",
                                     ),
                                       validator:(tfgirdisi) {
@@ -272,7 +272,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                           decoration: customInputDecoration(
                                             Filcolorr: Colors.white,//arkaplan rengi
                                             colorr: Colors.purple,//error rengi
-                                            prefixIcon: Icons.phone_outlined,
+                                            suffixIcon: Icons.phone_outlined,
                                             hintText: "Telefon",
                                             hintStyle: TextStyle(
                                               color: Colors.grey[600],

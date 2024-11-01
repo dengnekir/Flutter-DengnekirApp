@@ -17,52 +17,65 @@ class VerificationData {
 ////////////////////////DECORATİON ORTAK KISIM//////////////////////
 InputDecoration customInputDecoration({
   String? hintText,
-  IconData? prefixIcon,
+  IconData? suffixIcon,
   String? prefixText,
   TextStyle? hintStyle,
   Color? colorr,
   Color? Filcolorr,
   String? labeltext,
-  Widget? passwordd,
+  Widget? passwordd, // password widgetı yeniden eklendi
+  bool hasError = false, // Hata durumunu kontrol etmek için eklendi
 }) {
   return InputDecoration(
-    suffixIcon:passwordd,//gorunur gorunmez icon sifre için gecerli
+    suffixIcon: passwordd != null
+        ? passwordd
+        : (suffixIcon != null
+        ? Icon(
+      suffixIcon,
+      color: hasError ? Colors.teal : Colors.grey, // Hata varsa teal, yoksa gri
+    )
+        : null),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20.0),
+      borderRadius: BorderRadius.circular(10.0),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.grey),
-
-    ),
-    errorBorder: OutlineInputBorder(
       borderSide: BorderSide(
-        color: Colors.grey, // Hata durumunda sol sınır rengi
-        width: 1.5,
-
+        color: Colors.white,
       ),
     ),
-    focusedErrorBorder: OutlineInputBorder( // Hata durumunda odaklanıldığında
-      borderSide: BorderSide(color: Colors.grey, width: 1.5),
-
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide( 
+        color: Colors.white,
+        width: 1.5,
+      ),
     ),
-    errorStyle: TextStyle( // Hata mesajı rengi
-     color: colorr,
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.grey,
+        width: 1.5,
+      ),
+    ),
+    errorStyle: TextStyle(
+      color: colorr,
       fontSize: 13,
       height: 0,
     ),
-    prefixIcon: Icon(prefixIcon),
     hintText: hintText,
     hintMaxLines: 25,
     labelText: labeltext,
-    labelStyle:TextStyle(
-      color: Colors.grey.shade700,
+    labelStyle: TextStyle(
+      color: Colors.white,
     ),
-    prefixText: prefixText, // Prefix text isteğe bağlı
+    prefixText: prefixText,
     hintStyle: hintStyle,
     filled: true,
     fillColor: Filcolorr,
   );
 }
+
+
+
+
 ////////////////////////////////BUTONLAR İÇİN/////////////////////
 
 class CustomButton extends StatelessWidget {
@@ -87,7 +100,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor = Colors.black,
     this.textColor = Colors.white,
     this.fontSize = 28,
-    this.width = 190,
+    this.width = 550,
     this.height = 40.0,
     this.borderRadius = 8.0,
     this.borderColor = Colors.transparent,
@@ -395,7 +408,7 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
                     onChanged: _filterCountryCodes,
                     decoration:customInputDecoration(
                       labeltext: "Ülke Telefon Kodları",
-                      prefixIcon: Icons.search,
+                      suffixIcon: Icons.search,
                     ),
                   ),
                 ),

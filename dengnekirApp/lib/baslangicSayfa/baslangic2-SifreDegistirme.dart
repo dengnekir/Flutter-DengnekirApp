@@ -111,7 +111,7 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                                     ),
                                     Filcolorr: Colors.white,
                                     colorr: Colors.white,
-                                    prefixIcon: Icons.password_outlined, // Name simgesi başa eklenir
+                                    suffixIcon: Icons.password_outlined, // Name simgesi başa eklenir
                                     hintText: "Şifre",
                                     hintStyle: TextStyle(
                                       color: Colors.grey[600], // HintText rengi
@@ -146,7 +146,7 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                                     ),
                                     colorr: Colors.white,
                                     Filcolorr: Colors.white,
-                                    prefixIcon: Icons.password_outlined, // Name simgesi başa eklenir
+                                    suffixIcon: Icons.password_outlined, // Name simgesi başa eklenir
                                     hintText: "Şifreyi Onayla",
                                     hintStyle: TextStyle(
                                       color: Colors.grey[600], // HintText rengi
