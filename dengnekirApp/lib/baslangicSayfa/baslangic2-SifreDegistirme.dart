@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../MainSayfa/AnaSayfa.dart';
+import '../main.dart';
 import 'baslangicOop.dart';
 
 /////////////////////////////////////////////////KODU ONAYLAMA//////////

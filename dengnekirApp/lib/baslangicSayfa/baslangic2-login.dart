@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../MainSayfa/AnaSayfa.dart';
+import '../main.dart';
 import 'baslangic2-sifreunutma.dart';
 import 'baslangic3-singup.dart';
 import 'baslangicOop.dart';
@@ -17,6 +17,8 @@ class _baslangicLoginState extends State<baslangicLogin> {
   final tfname = TextEditingController();
   final tfpassword = TextEditingController();
   bool hasError = false;
+  bool isRememberMeChecked = false; // Hatırla durumu sifre kaydetme
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,38 +33,35 @@ class _baslangicLoginState extends State<baslangicLogin> {
           child: Center(
             child: Stack(
               children: [
-                Positioned.fill(
+                Positioned(
+                  top: 0,
                   child: Image.asset(
-                    'image/1.png',
-                    fit: BoxFit.cover,
+                    'image/1.1.png',
                   ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: screenWidth * 0.07),
-                            child: Text(
-                              "Giriş Yap",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: "Rowdies",
-                                fontSize: screenWidth * 0.09,
+                        Padding(
+                          padding:  EdgeInsets.only(bottom:screenHeight*0.09),
+                          child: Text(
+                                "Giriş Yap",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Rowdies",
+                                  fontSize: screenWidth * 0.09,
+                                ),
                               ),
-                            ),
-                          ),
                         ),
                       ],
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding:  EdgeInsets.all(screenHeight*0.02),
                         child: Form(
                           key: formkey,
                           child: Padding(
@@ -70,18 +69,19 @@ class _baslangicLoginState extends State<baslangicLogin> {
                             child: Column(
                               children: [
                                 TextFormField(
-                                  cursorColor: Colors.grey,
+                                  cursorColor: Colors.black54,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                   ),
                                   controller: tfname,
                                   decoration: customInputDecoration(
                                     Filcolorr: Colors.transparent,
-                                    colorr: Colors.white,
+                                    colorr: Colors.black54,
                                     suffixIcon: Icons.person,
                                     hintText: "Kullanıcı Adı",
+                                    labeltext: "Kullanıcı Adı",
                                     hintStyle: TextStyle(
-                                      color: Colors.grey,
+                                      color: Colors.black54,
                                     ),
                                     hasError: hasError,
                                   ),
@@ -107,19 +107,18 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                   },
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 20.0, bottom: 5.0),
-                                  child: Padding(
                                     padding: const EdgeInsets.only(top: 20.0, bottom: 5.0),
                                     child: TextFormField(
-                                      cursorColor: Colors.grey,
-                                      style: TextStyle(color: Colors.white),
+                                      cursorColor: Colors.black54,
+                                      style: TextStyle(color: Colors.black54),
                                       controller: tfpassword,
                                       decoration: customInputDecoration(
                                         Filcolorr: Colors.transparent,
-                                        colorr: Colors.white,
+                                        colorr: Colors.black54,
                                         suffixIcon: Icons.key,
                                         hintText: "Şifre Giriniz",
-                                        hintStyle: TextStyle(color: Colors.grey),
+                                        labeltext: "Şifre Giriniz",
+                                        hintStyle: TextStyle(color: Colors.black54),
                                         hasError: hasError, // Hata durumunu geçiriyoruz
                                       ),
                                       obscureText: true,
@@ -152,14 +151,32 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                         return null; // Geçerli şifre
                                       },
                                     ),
-
-                                  )
-
                                 ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Checkbox(
+                                      checkColor: Colors.grey,
+                                      value: isRememberMeChecked, // Boolean değişkenini kullan
+                                      onChanged: (bool? value) {
+                                        setState(() {
+                                          isRememberMeChecked = value ?? false; // Değeri güncelle
+                                        });
+                                      },
+                                      activeColor: Colors.teal, // Onaylı durum rengi
+                                    ),
+                                    Text(
+                                      "Beni Hatırla",
+                                      style: TextStyle(color: Colors.black), // Yazı rengi
+                                    ),
+                                  ],
+                                ),
+
                                 Padding(
-                                  padding: EdgeInsets.only(top: screenHeight * 0.05),
+                                  padding: EdgeInsets.only(top: screenHeight * 0),
                                   child: SizedBox(
                                     width: screenWidth * 1.1,
+                                    height: screenWidth * 0.2,
                                     child: CustomButton(
                                       text: "Giriş Yap",
                                       onPressed: () {
@@ -176,69 +193,110 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                           );
                                         }
                                       },
-                                      backgroundColor: Colors.teal,
+                                      backgroundColor: Color.fromRGBO(
+                                          88, 148, 141, 1.0),
                                       textColor: Colors.white,
                                       borderColor: Colors.black87,
                                       elevation: 5,
-                                      borderRadius: 10,
+                                      borderRadius: 30,
                                       fontSize: screenWidth * 0.05,
                                     ),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => sifreYenileme(),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          "Şifremi unuttum",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: screenWidth * 0.04,
-                                          ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => sifreYenileme(),
+                                        ),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Şifremi unuttum",
+                                        style: TextStyle(
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: screenWidth * 0.04,
                                         ),
                                       ),
                                     ),
-                                    Align(
-                                      alignment: Alignment.centerRight,
-                                      child: TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => baslangicSingup(),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          "Kayıt Ol",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: screenWidth * 0.04,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
+
                               ],
                             ),
                           ),
                         ),
                       ),
                     ),
+
+
                   ],
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(bottom: screenHeight*0.04),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end, // Orta hizalama
+                    children: [
+
+                      // Row ile yeni yapı
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center, // Boşlukları ayarla
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 1,
+                              indent: 20,
+                              endIndent: 10,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text("YADA", style: TextStyle(color: Colors.grey)),
+                          Expanded(
+                            child: Divider(
+                              thickness: 1,
+                              indent: 10,
+                              endIndent: 20,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Column(
+                          children: [
+                            Text("Hesabınız yok mu?", style: TextStyle(color: Colors.black)),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => baslangicSingup(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Hemen kayıt ol",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: screenWidth * 0.04,
+
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

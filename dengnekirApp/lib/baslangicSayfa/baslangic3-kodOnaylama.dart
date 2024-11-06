@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/widgets.dart';
 
-import '../MainSayfa/AnaSayfa.dart';
+import '../main.dart';
 
 class kodOnaylama extends StatefulWidget {
   final VerificationData data; // Constructor'da kullanılacak baslangicooptan bilgi alır

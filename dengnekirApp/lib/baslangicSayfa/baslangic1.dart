@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Positioned(
                     top: 0,
                     child:
-                      Image.asset('image/1.png',
+                      Image.asset('image/1.1.png',
                       ),
                   ),
                   Positioned(//6.4> inç ekranlar için yuksekten ayarlama
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           style:
                           TextStyle(
                               fontSize: 50,
-                              color: Colors.white,
+                              color: Colors.black,
                           ),
                           ),
                           //AÇIKLAMA
@@ -88,8 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.only(top: 10,bottom: 35),
                             child: Text("Senin Yolculuğun, Senin Hikayen",
                             style: TextStyle(
+                              fontFamily: "Lato",
                               fontSize: 15,
-                              color: Colors.white
+                              color: Colors.black
                             ),                         ),
                           ),
                           //BUTTON
@@ -106,49 +107,74 @@ class _MyHomePageState extends State<MyHomePage> {
                                   MaterialPageRoute(builder: (context) => baslangicLogin()),
                                 );
                               },
-                              backgroundColor: Colors.teal,
+                              backgroundColor: Color.fromRGBO(
+                                  88, 148, 141, 1.0),
                               textColor: Colors.white,
                               borderColor: Colors.black87,
                               elevation: 1,
-                              borderRadius: 10,
+                              borderRadius: 30,
                               fontSize: screenWidth*0.05,
                             ),
                           ),
-                          SizedBox(
-                            height: screenHeight*0.22,
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Divider(
-                                    color: Colors.white, // Çizgi rengi
-                                    thickness: 1,        // Çizgi kalınlığı
-                                    indent: 0,           // Soldan boşluk
-                                    endIndent: 0,        // Sağdan boşluk
-                                  ),
-                                  Text(
-                                    "Hesabın Yok mu?",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  SizedBox(height: 8), // Yazı ile buton arasındaki boşluk
-                                  TextButton(
-                                      onPressed: () {
-                            print("Signup ekrana geçiliyor");
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => baslangicSingup()),
-                            );
-                            }, child: Text("Kayıt Ol", style: TextStyle(
-                                    color: Colors.teal,
-                                    fontSize: screenWidth*0.05
-                                  ),)),
+                          Padding(
+                            padding:  EdgeInsets.only(top: screenHeight*0.15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end, // Orta hizalama
+                              children: [
 
-                                ],
-                              ),
+                                // Row ile yeni yapı
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center, // Boşlukları ayarla
+                                  children: [
+                                    Expanded(
+                                      child: Divider(
+                                        thickness: 1,
+                                        indent: 20,
+                                        endIndent: 10,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    Text("Hesabın yok mu?", style: TextStyle(color: Colors.grey)),
+                                    Expanded(
+                                      child: Divider(
+                                        thickness: 1,//kalınlık
+                                        indent: 10,//uzunluk
+                                        endIndent: 20,//sonndan uzunluk
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => baslangicSingup(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          "Hemen kayıt ol",
+                                          style: TextStyle(
+                                            color: Colors.black54,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: screenWidth * 0.04,
+
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
+                          ),
 
                         ],
                       ),

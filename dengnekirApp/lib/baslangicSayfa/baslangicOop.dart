@@ -40,12 +40,12 @@ InputDecoration customInputDecoration({
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
-        color: Colors.white,
+        color: Colors.grey,
       ),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide( 
-        color: Colors.white,
+      borderSide: BorderSide(
+        color: Colors.black54,
         width: 1.5,
       ),
     ),
@@ -64,7 +64,7 @@ InputDecoration customInputDecoration({
     hintMaxLines: 25,
     labelText: labeltext,
     labelStyle: TextStyle(
-      color: Colors.white,
+      color: Colors.black54,
     ),
     prefixText: prefixText,
     hintStyle: hintStyle,
@@ -100,7 +100,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor = Colors.black,
     this.textColor = Colors.white,
     this.fontSize = 28,
-    this.width = 550,
+    this.width = 200,
     this.height = 40.0,
     this.borderRadius = 8.0,
     this.borderColor = Colors.transparent,
@@ -374,9 +374,9 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
       ),
       body: Stack(
         children:[
-          Positioned.fill(
-              child: Image.asset("image/2SifreYenileme.png",
-              fit: BoxFit.cover,
+          Positioned(
+            top: 0,
+              child: Image.asset("image/1.1.png",
               ),
 
           ),
@@ -387,12 +387,12 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
                 border: Border.all(
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.transparent,
                   width: 2.0,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.indigo.withOpacity(0.6),
+                    color: Colors.black12.withOpacity(0.1),
                     blurRadius: 20.0,
                     offset: Offset(0, 1),
                   ),
@@ -403,10 +403,13 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+
                     cursorColor: Colors.grey,
                     cursorErrorColor: Colors.grey,
                     onChanged: _filterCountryCodes,
                     decoration:customInputDecoration(
+                      Filcolorr: Colors.transparent,//arkaplan rengi
+
                       labeltext: "Ülke Telefon Kodları",
                       suffixIcon: Icons.search,
                     ),
@@ -433,11 +436,12 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
                             margin: EdgeInsets.only(bottom: 1.0), // Her bir öğe arasına boşluk bırakmak için margin
 
                             decoration: BoxDecoration(
-                              color: index % 2 == 0 ? Colors.indigo.shade50 : Colors.purple.shade50, // Alternatif arka plan rengi için
+                              color: index % 2 == 0 ? Colors.white30 : Colors.white, // Alternatif arka plan rengi için
                               borderRadius: BorderRadius.circular(10.0), // Köşeleri yuvarlatmak için
                               border: Border.all(
-                                color: isSelected ? Colors.black : Colors.purple,
-                                width: 3.5,
+                                color: isSelected ? Colors.black : Color.fromRGBO(
+                                    88, 148, 141, 1.0),
+                                width: 1.5,
                               ),
                             ),
                             child: Row(
@@ -447,14 +451,14 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
                                   filteredCountryCodes[index]['name']!,
                                   style: TextStyle(
 
-                                    color: isSelected ? Colors.black : Colors.purple,
+                                    color: isSelected ? Colors.black :Colors.black54,
                                     fontSize: 16.0,
                                   ),
                                 ),
                                 Text(
                                   filteredCountryCodes[index]['code']!,
                                   style: TextStyle(
-                                    color: isSelected ? Colors.black : Colors.purple,
+                                    color: isSelected ? Colors.black : Colors.black54,
                                     fontSize: 16.0,
                                   ),
                                 ),

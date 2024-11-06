@@ -53,9 +53,12 @@ class _baslangicSingupstate extends State<baslangicSingup> {
       });
     }
   }
-
+  bool hasError = false;
   @override
   Widget build(BuildContext context) {
+
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -65,41 +68,41 @@ class _baslangicSingupstate extends State<baslangicSingup> {
             child:
             Stack(
               children: [
-                Positioned.fill(
+                Positioned(
+                  top: 0,
                   child:
-                  Image.asset('image/3.png',
-                    fit: BoxFit.cover,
+                  Image.asset('image/1.1.png',
                   ),
                 ),
 
 
                 Column(
 
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Center(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 50.0),
-                            child: Text("Yeni Hesap",
-                              style: TextStyle(
-                                  fontFamily: "Rowdies",
-                                  fontSize: 55
-                              ),),
+
+                       Center(
+                        child: Padding(
+                          padding:  EdgeInsets.only(top:screenHeight*0.04),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Kayıt Ol",
+                                  style: TextStyle(
+                                      fontFamily: "Rowdies",
+                                    fontSize: screenWidth * 0.09,
+
+                                  ),),
+
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("K a y ı t   O l"),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom:40.0,right: 40.0,left: 40.0),
+                        padding:  EdgeInsets.all(screenWidth*0.05),
                         child: Form(
                           key: formkey,
                           child:Padding(
@@ -113,24 +116,30 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     cursorColor: Colors.black,//yazılırkenki cursor rengi
                                     controller: tfname,
                                     decoration: customInputDecoration(
-                                      colorr: Colors.purple,
+                                      colorr: Colors.black54,
                                       Filcolorr: Colors.transparent,//arkaplan rengi
                                       suffixIcon: Icons.person, // name simgesi başa eklenir
                                       hintText: "Kullanıcı Adı",
+                                      labeltext: "Hesap Oluştur",
+                                      hasError: hasError,
                                     ),
                                     validator: (tfgirdisi){
                                       if(tfgirdisi!.isEmpty){
+                                        setState(() => hasError = true);
                                         return "Kullanıcı Adınızı Giriniz";
                                       }
                                       if(tfgirdisi.length>15){
+                                        setState(() => hasError = true);
                                         return "Kullanıcı Adı 15 karakterden Uzun Olamaz";
                                       }
                                       // Kullanıcı adında olmaması gereken karakterleri kontrol eden RegExp
                                       final regex = RegExp(r'[!?\^+%&/|-]');
 
                                       if (regex.hasMatch(tfgirdisi)) {
+                                        setState(() => hasError = true);
                                         return "Kullanıcı adınızda ! ? ' ^ + % & / - | karakterler olmamalı";
                                       }
+                                      setState(() => hasError = false);
                                       return null;
                                     },
                                   ),
@@ -143,7 +152,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     controller: tfpassword,
                                     decoration: customInputDecoration(
                                       Filcolorr: Colors.transparent,
-                                      colorr: Colors.purple,
+                                      colorr: Colors.black54,
                                       //şifre gorunur yapma kapatma
                                       passwordd: IconButton(
                                         icon:Icon(
@@ -157,14 +166,18 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     },
                                       ),
                                       suffixIcon: Icons.lock, // password simgesi başa eklenir
-                                      hintText: "Şifre Giriniz",
+                                        hintText: "Şifre Giriniz",
+                                        labeltext: "Şifre Giriniz",
+                                      hasError: hasError
                                     ),
                                     obscureText: _isObscure,//sifre gorunur veya gorunmez yapma
                                     validator:(tfgirdisi){
                                       if(tfgirdisi!.isEmpty){
+                                        setState(() => hasError = true);
                                         return "Lütfen Şifre Giriniz";
                                       }
                                       if(tfgirdisi!.length<6){
+                                        setState(() => hasError = true);
                                         return "Şifre 6 Karakterden Küçük Olamaz";
                                       }
                                       bool hasUpperCase = tfgirdisi.contains(RegExp(r'[A-Z]'));
@@ -172,14 +185,18 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                       bool hasDigit = tfgirdisi.contains(RegExp(r'[0-9]'));
 
                                       if (!hasUpperCase) {
+                                        setState(() => hasError = true);
                                         return "Şifre en az bir büyük harf içermelidir";
                                       }
                                       if (!hasLowerCase) {
+                                        setState(() => hasError = true);
                                         return "Şifre en az bir küçük harf içermelidir";
                                       }
                                       if (!hasDigit) {
+                                        setState(() => hasError = true);
                                         return "Şifre en az bir rakam içermelidir";
                                       }
+                                      setState(() => hasError = false);
                                       return null;
                                     },
                                   ),
@@ -192,13 +209,16 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     keyboardType: TextInputType.emailAddress,
                                     controller: tfMail,
                                     decoration: customInputDecoration(
-                                      Filcolorr: Colors.white,
-                                      colorr: Colors.purple,
-                                      suffixIcon: Icons.alternate_email, // email simgesi başa eklenir
-                                      hintText: "E-Mail Giriniz",
+                                      Filcolorr: Colors.transparent,
+                                      colorr: Colors.black54,
+                                      suffixIcon: Icons.mail, // email simgesi başa eklenir
+                                        hintText: "E-Mail Giriniz",
+                                        labeltext: "E-Mail Giriniz",
+                                      hasError: hasError
                                     ),
                                     validator:(tfgirdisi){
                                       if(tfgirdisi!.isEmpty){
+                                        setState(() => hasError = true);
                                         return "Lütfen Email Giriniz";
                                       }
                                       if(!tfgirdisi.contains("@")){
@@ -215,15 +235,19 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     cursorColor: Colors.black,//yazılırkenki cursor rengi
                                     controller: tfbirthday,
                                     decoration: customInputDecoration(
-                                      Filcolorr: Colors.white,//arkaplan rengi
-                                      colorr: Colors.purple,//error color
+                                      Filcolorr: Colors.transparent,//arkaplan rengi
+                                      colorr: Colors.black54,//error color
                                       suffixIcon: Icons.calendar_month, // name simgesi başa eklenir
-                                      hintText: "Doğum Tarihiniz",
+                                        hintText: "Doğum Tarihiniz",
+                                        labeltext: "Doğum Tarihiniz",
+                                      hasError: hasError
                                     ),
                                       validator:(tfgirdisi) {
                                         if (tfgirdisi!.isEmpty) {
+                                          setState(() => hasError = true);
                                           return "Lütfen Doğum Tarihini Giriniz";
                                         }
+                                        setState(() => hasError = false);
                                         return null;
                                       },
                                     onTap: () {
@@ -240,17 +264,16 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        height: 63,
+                                        height: screenHeight*0.072,
                                         width: 100,
                                         decoration: BoxDecoration(
-                                          color: Colors.white, // Arka plan rengi (yarı şeffaf beyaz)
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(16),
-                                            bottomLeft: Radius.circular(16),
+                                          color: Colors.transparent, // Arka plan rengi (yarı şeffaf beyaz)
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(10)
                                           ),
                                           border: Border.all(
-                                            color: Colors.grey.shade500,
-                                            width: 1.5
+                                            color: Colors.black54,
+                                            width: 1
                                           )
                                         ),
                                         child: TextButton(
@@ -258,7 +281,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                           child: Text(
                                             //VARSAYILAN VE GOSTERİLEN KOD
                                             _selectedCountryCode ?? 'Henüz ülke kodu seçilmedi',
-                                            style: TextStyle(fontSize: 20,color: Colors.grey),
+                                            style: TextStyle(fontSize: 20,color: Colors.black54),
 
 
                                           ),
@@ -270,28 +293,35 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                           keyboardType: TextInputType.number,
                                           controller: tfPhone,
                                           decoration: customInputDecoration(
-                                            Filcolorr: Colors.white,//arkaplan rengi
-                                            colorr: Colors.purple,//error rengi
+                                            Filcolorr: Colors.transparent,//arkaplan rengi
+                                            colorr: Colors.black54,//error rengi
                                             suffixIcon: Icons.phone_outlined,
-                                            hintText: "Telefon",
+                                              hintText: "Telefon",
+                                              labeltext: "Telefon",
                                             hintStyle: TextStyle(
                                               color: Colors.grey[600],
                                             ),
+                                            hasError: hasError
                                           ),
                                           validator:(tfgirdisi){
                                             if(tfgirdisi!.isEmpty){
+                                              setState(() => hasError = true);
                                               return "Telefon Numaranızı Giriniz";
                                             }
                                             if (_selectedCountryCode=='+90'&&tfgirdisi.isNotEmpty && tfgirdisi[0] != '5' ) {
+                                              setState(() => hasError = true);
                                               return "Geçersiz numara";
                                             }
 
                                             if (tfgirdisi.length != 10) {
+                                              setState(() => hasError = true);
                                               return "Telefon Numarası 10 Karakterdir";
                                             }
                                             if (!RegExp(r'^[0-9]+$').hasMatch(tfgirdisi)) {
+                                              setState(() => hasError = true);
                                               return "Sadece Rakam Girilmelidir"; // Harf veya özel karakter kontrolü
                                             }
+                                            setState(() => hasError = false);
                                             return null;
                                           },
                                         ),
@@ -299,69 +329,115 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: SizedBox(
-                                    //baslangicoop button
-                                    child: CustomButton(
-                                    text: "Kayıt OL",
-                                      onPressed:(){
-                                        //key anahtarları buraya gelir ve doğrulama işlemleri olur
-                                        //yani karakter uzunluğu 6 yı geciyor mu mesela
-                                        print("Anasayfaya Geçiş izni kontrol ediliyor");
-                                        bool kontrolsonucu=formkey.currentState!.validate();//TEXTFİELD KONTROL
-                                        if(kontrolsonucu){
-                                          String name=tfname.text;
-                                          String pasw=tfpassword.text;
-                                          String mail=tfMail.text;//onay sayfasına gider
-                                          String phone=tfPhone.text;//onay sayfasına gider
-                                          print("Kullanıcı Adı:$name ve Şifresi $pasw dir. Email:$mail ve Numarası:$phone dir");
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                                              kodOnaylama(
-                                                //diğer sayfaya yonlendirme
-                                                data: VerificationData(email: mail, phoneNumber: phone,userName: name),//onay sayfasına gidiyor
-                                              ),
-                                          ));
-                                        }
-
-                                      },
-                                      backgroundColor: Colors.black,
-                                      textColor: Colors.white,
-                                      borderColor: Colors.black87,
-                                      elevation: 5,
-                                      borderRadius: 30,
-                                      ),),
 
 
-                                ),
-                                Text("Hesabın mı Var!",style: TextStyle(
-                                  color: Colors.black,
-                                ),),
-                                //baslangicoop button
-                                CustomButton(
-                                  text: "Giriş Yap",
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => baslangicLogin()),
-                                    );
-                                    print("Kayıt Ol ekranına geri dönüldü");
-                                  },
-                                  backgroundColor: Colors.transparent,
-                                  textColor: Colors.black,
-                                  borderRadius: 30,
-                                  fontSize: 16,
-                                ),
                               ],
                             ),
                           ),
                         ),
                       ),
                     ),
+                    Padding(
+                      padding:  EdgeInsets.only(top:screenHeight*0.01),
+                      child: SizedBox(
+                        width: screenWidth * 1.1,
+                        //baslangicoop button
+                        child: CustomButton(
+                          text: "Kayıt OL",
+                          onPressed:(){
+                            //key anahtarları buraya gelir ve doğrulama işlemleri olur
+                            //yani karakter uzunluğu 6 yı geciyor mu mesela
+                            print("Anasayfaya Geçiş izni kontrol ediliyor");
+                            bool kontrolsonucu=formkey.currentState!.validate();//TEXTFİELD KONTROL
+                            if(kontrolsonucu){
+                              String name=tfname.text;
+                              String pasw=tfpassword.text;
+                              String mail=tfMail.text;//onay sayfasına gider
+                              String phone=tfPhone.text;//onay sayfasına gider
+                              print("Kullanıcı Adı:$name ve Şifresi $pasw dir. Email:$mail ve Numarası:$phone dir");
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                                  kodOnaylama(
+                                    //diğer sayfaya yonlendirme
+                                    data: VerificationData(email: mail, phoneNumber: phone,userName: name),//onay sayfasına gidiyor
+                                  ),
+                              ));
+                            }
+
+                          },
+                          backgroundColor: Color.fromRGBO(
+                              88, 148, 141, 1.0),
+                          textColor: Colors.white,
+                          borderColor: Colors.black87,
+                          elevation: 5,
+                          borderRadius: 30,
+                          fontSize: screenWidth*0.05,
+                        ),),
+
+
+                    ),
+
                   ],
                 ),
+                Padding(
+                  padding:  EdgeInsets.only(bottom: screenHeight*0.04, ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end, // Orta hizalama
+                    children: [
 
+                      // Row ile yeni yapı
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center, // Boşlukları ayarla
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 1,
+                              indent: 20,
+                              endIndent: 10,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text("YADA", style: TextStyle(color: Colors.grey)),
+                          Expanded(
+                            child: Divider(
+                              thickness: 1,
+                              indent: 10,
+                              endIndent: 20,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
 
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Column(
+                          children: [
+                            Text("Hesabınız var m1?", style: TextStyle(color: Colors.black)),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => baslangicLogin(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Giriş Yap",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: screenWidth * 0.04,
+
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
