@@ -1,11 +1,12 @@
 
+import 'package:Vistopia/OOP/colors.dart';
 import 'package:Vistopia/baslangicSayfa/baslangic3-singup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'baslangic2-login.dart';
-import 'baslangicOop.dart';
+import '../OOP/baslangicOop.dart';
 
 void main() {
   runApp(const MyDengnekirApp());
@@ -19,7 +20,8 @@ class MyDengnekirApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dengnekir',//çalıştırılmadı appbar yok
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colorss.vibrantTeal),
+        fontFamily: "OpenSans",
         useMaterial3: true,
       ),
       home:  MyHomePage(title: 'Dengnekir'),//appbar yok çalıştırılmadı
@@ -79,7 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text("Vistopia",
                           style:
                           TextStyle(
-                              fontSize: 50,
+                            fontFamily: "Poppins",
+                              fontSize: screenWidth*0.13,
                               color: Colors.black,
                           ),
                           ),
@@ -88,8 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.only(top: 10,bottom: 35),
                             child: Text("Senin Yolculuğun, Senin Hikayen",
                             style: TextStyle(
-                              fontFamily: "Lato",
-                              fontSize: 15,
+                              fontFamily: "OpenSans",
+                              fontSize: screenWidth*0.045,
                               color: Colors.black
                             ),                         ),
                           ),
@@ -107,10 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   MaterialPageRoute(builder: (context) => baslangicLogin()),
                                 );
                               },
-                              backgroundColor: Color.fromRGBO(
-                                  88, 148, 141, 1.0),
+                              backgroundColor: Colorss.vibrantTeal,
                               textColor: Colors.white,
                               borderColor: Colors.black87,
+
                               elevation: 1,
                               borderRadius: 30,
                               fontSize: screenWidth*0.05,
@@ -134,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         color: Colors.grey,
                                       ),
                                     ),
-                                    Text("Hesabın yok mu?", style: TextStyle(color: Colors.grey)),
+                                    Text("Hesabın yok mu?", style: TextStyle(color: Colorss.darkGray)),
                                     Expanded(
                                       child: Divider(
                                         thickness: 1,//kalınlık
@@ -163,8 +166,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                           "Hemen kayıt ol",
                                           style: TextStyle(
                                             color: Colors.black54,
+                                            fontFamily: "OpenSans",
                                             fontWeight: FontWeight.bold,
-                                            fontSize: screenWidth * 0.04,
+                                            fontSize: screenWidth * 0.045,
 
                                           ),
                                         ),

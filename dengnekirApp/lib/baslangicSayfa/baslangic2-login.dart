@@ -1,3 +1,4 @@
+import 'package:Vistopia/OOP/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import '../main.dart';
 import 'baslangic2-sifreunutma.dart';
 import 'baslangic3-singup.dart';
-import 'baslangicOop.dart';
+import '../OOP/baslangicOop.dart';
 
 class baslangicLogin extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class baslangicLogin extends StatefulWidget {
 }
 
 class _baslangicLoginState extends State<baslangicLogin> {
+  bool _isObscure = true; // Başlangıçta şifre gizli olacak
   final formkey = GlobalKey<FormState>();
   final tfname = TextEditingController();
   final tfpassword = TextEditingController();
@@ -51,7 +53,7 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                 "Giriş Yap",
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontFamily: "Rowdies",
+                                  fontFamily: "Poppins",
                                   fontSize: screenWidth * 0.09,
                                 ),
                               ),
@@ -115,13 +117,25 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                       decoration: customInputDecoration(
                                         Filcolorr: Colors.transparent,
                                         colorr: Colors.black54,
-                                        suffixIcon: Icons.key,
+                                        passwordd: IconButton(
+                                          icon:Icon(
+                                            _isObscure ? Icons.visibility : Icons.visibility_off,
+                                            color: Colors.grey,
+                                          ) ,
+                                          onPressed: () {
+                                            setState(() {
+                                              _isObscure = !_isObscure; // Şifre görünürlüğünü değiştir
+                                            });
+                                          },
+                                        ),
+                                        suffixIcon: Icons.lock, // password simgesi başa eklenir
                                         hintText: "Şifre Giriniz",
                                         labeltext: "Şifre Giriniz",
                                         hintStyle: TextStyle(color: Colors.black54),
                                         hasError: hasError, // Hata durumunu geçiriyoruz
                                       ),
-                                      obscureText: true,
+                                      obscureText: _isObscure,//sifre gorunur veya gorunmez yapma
+
                                       validator: (tfgirdisi) {
                                         if (tfgirdisi == null || tfgirdisi.isEmpty) {
                                           setState(() => hasError = true); // Hata durumunu true yap
@@ -156,18 +170,24 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Checkbox(
-                                      checkColor: Colors.grey,
+                                      checkColor: Colors.white,
+
                                       value: isRememberMeChecked, // Boolean değişkenini kullan
                                       onChanged: (bool? value) {
                                         setState(() {
                                           isRememberMeChecked = value ?? false; // Değeri güncelle
                                         });
                                       },
-                                      activeColor: Colors.teal, // Onaylı durum rengi
+                                      activeColor: Colorss.vibrantTeal, // Onaylı durum rengi
                                     ),
                                     Text(
                                       "Beni Hatırla",
-                                      style: TextStyle(color: Colors.black), // Yazı rengi
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                        fontFamily: "OpenSans",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: screenWidth * 0.045,
+                                      ), // Yazı rengi
                                     ),
                                   ],
                                 ),
@@ -193,8 +213,7 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                           );
                                         }
                                       },
-                                      backgroundColor: Color.fromRGBO(
-                                          88, 148, 141, 1.0),
+                                      backgroundColor: Colorss.vibrantTeal,
                                       textColor: Colors.white,
                                       borderColor: Colors.black87,
                                       elevation: 5,
@@ -220,8 +239,9 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                         "Şifremi unuttum",
                                         style: TextStyle(
                                           color: Colors.black54,
+                                          fontFamily: "OpenSans",
                                           fontWeight: FontWeight.bold,
-                                          fontSize: screenWidth * 0.04,
+                                          fontSize: screenWidth * 0.045,
                                         ),
                                       ),
                                     ),
@@ -272,7 +292,9 @@ class _baslangicLoginState extends State<baslangicLogin> {
                         alignment: Alignment.bottomCenter,
                         child: Column(
                           children: [
-                            Text("Hesabınız yok mu?", style: TextStyle(color: Colors.black)),
+                            Text("Hesabınız yok mu?", style: TextStyle(color: Colors.black,
+
+                            )),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -286,8 +308,9 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                 "Hemen kayıt ol",
                                 style: TextStyle(
                                   color: Colors.black54,
+                                  fontFamily: "OpenSans",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: screenWidth * 0.04,
+                                  fontSize: screenWidth * 0.045,
 
                                 ),
                               ),

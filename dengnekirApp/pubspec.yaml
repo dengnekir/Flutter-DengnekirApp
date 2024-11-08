@@ -32,10 +32,10 @@ flutter:
     - fonts/
 
   fonts:
-    - family: Lato
+    - family: OpenSans
       fonts:
-        - asset: fonts/Lato-Black.ttf
-          weight: 300
+        - asset: fonts/OpenSans_Condensed-Bold.ttf
+          weight: 700
     - family: Poppins
       fonts:
         - asset: fonts/Poppins-Bold.ttf

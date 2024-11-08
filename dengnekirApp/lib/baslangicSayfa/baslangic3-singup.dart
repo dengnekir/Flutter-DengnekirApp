@@ -1,9 +1,13 @@
+import 'package:Vistopia/OOP/colors.dart';
 import 'package:Vistopia/baslangicSayfa/baslangic2-login.dart';
-import 'package:Vistopia/baslangicSayfa/baslangicOop.dart';
-import 'package:Vistopia/baslangicSayfa/baslangic3-kodOnaylama.dart';
+import 'package:Vistopia/OOP/baslangicOop.dart';
+import 'package:Vistopia/baslangicSayfa/baslangicSKodOnay.dart';
+import 'package:Vistopia/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'baslangic3-telefonNumara.dart';
 
 class baslangicSingup extends StatefulWidget {
 
@@ -13,7 +17,6 @@ class baslangicSingup extends StatefulWidget {
 }
 
 class _baslangicSingupstate extends State<baslangicSingup> {
-
   var formkey=GlobalKey<FormState>();//key anahtarı
   var tfname=TextEditingController();//kullanıcı işlemleri
   var tfpassword=TextEditingController();//sifre islemleri
@@ -89,7 +92,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                             children: [
                               Text("Kayıt Ol",
                                   style: TextStyle(
-                                      fontFamily: "Rowdies",
+                                      fontFamily: "Poppins",
                                     fontSize: screenWidth * 0.09,
 
                                   ),),
@@ -211,7 +214,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                     decoration: customInputDecoration(
                                       Filcolorr: Colors.transparent,
                                       colorr: Colors.black54,
-                                      suffixIcon: Icons.mail, // email simgesi başa eklenir
+                                      suffixIcon: Icons.email_outlined, // email simgesi başa eklenir
                                         hintText: "E-Mail Giriniz",
                                         labeltext: "E-Mail Giriniz",
                                       hasError: hasError
@@ -338,7 +341,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                       ),
                     ),
                     Padding(
-                      padding:  EdgeInsets.only(top:screenHeight*0.01),
+                      padding:  EdgeInsets.only(bottom:screenHeight*0.03),
                       child: SizedBox(
                         width: screenWidth * 1.1,
                         //baslangicoop button
@@ -350,22 +353,20 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                             print("Anasayfaya Geçiş izni kontrol ediliyor");
                             bool kontrolsonucu=formkey.currentState!.validate();//TEXTFİELD KONTROL
                             if(kontrolsonucu){
-                              String name=tfname.text;
-                              String pasw=tfpassword.text;
-                              String mail=tfMail.text;//onay sayfasına gider
-                              String phone=tfPhone.text;//onay sayfasına gider
-                              print("Kullanıcı Adı:$name ve Şifresi $pasw dir. Email:$mail ve Numarası:$phone dir");
+                              String name = tfname.text;
+                              String pasw = tfpassword.text;
+                              String mail=tfMail.text;
+                              String birthday=tfbirthday.text;
+                              String tlf=tfPhone.text;
+                              print("Kullanıcı Adı:$name ve Şifresi $pasw . mail:$mail , doğum tarihi: $birthday, telefonu:$tlf");
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                                  kodOnaylama(
-                                    //diğer sayfaya yonlendirme
-                                    data: VerificationData(email: mail, phoneNumber: phone,userName: name),//onay sayfasına gidiyor
-                                  ),
+                                  MainSayfa()
                               ));
                             }
 
+
                           },
-                          backgroundColor: Color.fromRGBO(
-                              88, 148, 141, 1.0),
+                          backgroundColor:Colorss.vibrantTeal,
                           textColor: Colors.white,
                           borderColor: Colors.black87,
                           elevation: 5,
@@ -379,7 +380,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                   ],
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(bottom: screenHeight*0.04, ),
+                  padding:  EdgeInsets.only(bottom: screenHeight*0.045, ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end, // Orta hizalama
                     children: [
@@ -412,7 +413,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                         alignment: Alignment.bottomCenter,
                         child: Column(
                           children: [
-                            Text("Hesabınız var m1?", style: TextStyle(color: Colors.black)),
+                            Text("Hesabınız var mı?", style: TextStyle(color: Colors.black)),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -426,8 +427,9 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                 "Giriş Yap",
                                 style: TextStyle(
                                   color: Colors.black54,
+                                  fontFamily: "OpenSans",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: screenWidth * 0.04,
+                                  fontSize: screenWidth * 0.045,
 
                                 ),
                               ),

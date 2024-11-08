@@ -1,143 +1,9 @@
+import 'package:Vistopia/OOP/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../OOP/baslangicOop.dart';
 
-
-////////////// KAYIT EKRANII BİLGİLERİ KOD ONAYINA AKTARMA/////////////////
-////////////////KOD ONAYI-SİNUP SAYFASI BAGLANTISI////////////////////
-class VerificationData {
-  final String email;
-  final String phoneNumber;
-  final String userName;
-
-  VerificationData({required this.email, required this.phoneNumber,required this.userName});
-}
-
-////////////////////////DECORATİON ORTAK KISIM//////////////////////
-InputDecoration customInputDecoration({
-  String? hintText,
-  IconData? suffixIcon,
-  String? prefixText,
-  TextStyle? hintStyle,
-  Color? colorr,
-  Color? Filcolorr,
-  String? labeltext,
-  Widget? passwordd, // password widgetı yeniden eklendi
-  bool hasError = false, // Hata durumunu kontrol etmek için eklendi
-}) {
-  return InputDecoration(
-    suffixIcon: passwordd != null
-        ? passwordd
-        : (suffixIcon != null
-        ? Icon(
-      suffixIcon,
-      color: hasError ? Colors.teal : Colors.grey, // Hata varsa teal, yoksa gri
-    )
-        : null),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.grey,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.black54,
-        width: 1.5,
-      ),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.grey,
-        width: 1.5,
-      ),
-    ),
-    errorStyle: TextStyle(
-      color: colorr,
-      fontSize: 13,
-      height: 0,
-    ),
-    hintText: hintText,
-    hintMaxLines: 25,
-    labelText: labeltext,
-    labelStyle: TextStyle(
-      color: Colors.black54,
-    ),
-    prefixText: prefixText,
-    hintStyle: hintStyle,
-    filled: true,
-    fillColor: Filcolorr,
-  );
-}
-
-
-
-
-////////////////////////////////BUTONLAR İÇİN/////////////////////
-
-class CustomButton extends StatelessWidget {
-  final String text;
-  final VoidCallback onPressed;
-  final Color backgroundColor;
-  final Color textColor;
-  final double fontSize;
-  final double width;
-  final double height;
-  final double borderRadius;
-  final Color borderColor;
-  final double elevation;
-  final EdgeInsetsGeometry padding;
-  final FontWeight fontWeight;
-
-  const CustomButton({
-
-    this.fontWeight=FontWeight.bold,
-    required this.text,
-    required this.onPressed,
-    this.backgroundColor = Colors.black,
-    this.textColor = Colors.white,
-    this.fontSize = 28,
-    this.width = 200,
-    this.height = 40.0,
-    this.borderRadius = 8.0,
-    this.borderColor = Colors.transparent,
-    this.elevation = 2.0,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: width,
-        height: height,
-        child: TextButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor,
-            padding: padding,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
-              side: BorderSide(color: borderColor),
-            ),
-            elevation: elevation,
-          ),
-
-          onPressed: onPressed,
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: fontSize,
-              color: textColor,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
 /////////////////////////////ULKE KODLARI//////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 void main() => runApp(countrycodess());
@@ -359,7 +225,7 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
     setState(() {
       filteredCountryCodes = countryCodes
           .where((country) =>//country kısmında name kısmına eriş
-          country['name']!.toLowerCase().contains(query.toLowerCase()))
+      country['name']!.toLowerCase().contains(query.toLowerCase()))
           .toList();//filtreli aramayı liste donustur
     });
   }
@@ -367,17 +233,16 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
 
-        title: Text('Ülke Telefon Kodu'),
-      ),
       body: Stack(
         children:[
           Positioned(
             top: 0,
-              child: Image.asset("image/1.1.png",
-              ),
+            child: Image.asset("image/1.1.png",
+            ),
 
           ),
           Padding(
@@ -399,83 +264,87 @@ class _CountryCodeSearchState extends State<CountryCodeSearch> {
                 ],
               ),
               child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.only(top:screenHeight*0.05,right: screenWidth*0.02,left: screenWidth*0.02),
+                    child: TextField(
 
-                    cursorColor: Colors.grey,
-                    cursorErrorColor: Colors.grey,
-                    onChanged: _filterCountryCodes,
-                    decoration:customInputDecoration(
-                      Filcolorr: Colors.transparent,//arkaplan rengi
+                      cursorColor: Colors.grey,
+                      cursorErrorColor: Colors.grey,
+                      onChanged: _filterCountryCodes,
+                      decoration:customInputDecoration(
 
-                      labeltext: "Ülke Telefon Kodları",
-                      suffixIcon: Icons.search,
+                        Filcolorr: Colors.transparent,//arkaplan rengi
+
+                        labeltext: "Ülke Telefon Kodları",
+
+                        suffixIcon: Icons.search,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: filteredCountryCodes.length,
-                    itemBuilder: (context, index) {
-                      final countryCode = filteredCountryCodes[index];
-                      final isSelected = _selectedCode == countryCode['code'];
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedCode = countryCode['code'];
-                            Navigator.pop(context, _selectedCode); // Seçilen ülke kodunu geri döndür
-                          });
-                          print("Seçilen Ülke Kodu: ${countryCode['code']}");
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
-                            margin: EdgeInsets.only(bottom: 1.0), // Her bir öğe arasına boşluk bırakmak için margin
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredCountryCodes.length,
+                      itemBuilder: (context, index) {
+                        final countryCode = filteredCountryCodes[index];
+                        final isSelected = _selectedCode == countryCode['code'];
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedCode = countryCode['code'];
+                              Navigator.pop(context, _selectedCode); // Seçilen ülke kodunu geri döndür
+                            });
+                            print("Seçilen Ülke Kodu: ${countryCode['code']}");
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+                              margin: EdgeInsets.only(bottom: 1.0), // Her bir öğe arasına boşluk bırakmak için margin
 
-                            decoration: BoxDecoration(
-                              color: index % 2 == 0 ? Colors.white30 : Colors.white, // Alternatif arka plan rengi için
-                              borderRadius: BorderRadius.circular(10.0), // Köşeleri yuvarlatmak için
-                              border: Border.all(
-                                color: isSelected ? Colors.black : Color.fromRGBO(
-                                    88, 148, 141, 1.0),
-                                width: 1.5,
+                              decoration: BoxDecoration(
+
+                                color: index % 2 == 0 ? Colors.white30 : Colors.white, // Alternatif arka plan rengi için
+                                borderRadius: BorderRadius.circular(10.0), // Köşeleri yuvarlatmak için
+                                border: Border.all(
+                                  color: isSelected ? Colors.black : Colorss.vibrantTeal,
+                                  width: 1.5,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    filteredCountryCodes[index]['name']!,
+                                    style: TextStyle(
+                                      fontFamily: "OpenSans", //ulke ismi fontstyle
+                                      color: isSelected ? Colors.black :Colors.black54,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  Text(
+                                    filteredCountryCodes[index]['code']!,
+                                    style: TextStyle(
+                                      fontFamily: "OpenSans", //ulke ismi fontstyle
+
+                                      color: isSelected ? Colors.black : Colors.black54,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  filteredCountryCodes[index]['name']!,
-                                  style: TextStyle(
-
-                                    color: isSelected ? Colors.black :Colors.black54,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                                Text(
-                                  filteredCountryCodes[index]['code']!,
-                                  style: TextStyle(
-                                    color: isSelected ? Colors.black : Colors.black54,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                              ],
-                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
 
-              ],
-                      ),
+                ],
+              ),
             ),
           ),
-    ],
+        ],
       ),
     );
   }

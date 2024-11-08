@@ -1,8 +1,9 @@
+import 'package:Vistopia/OOP/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
-import 'baslangicOop.dart';
+import '../OOP/baslangicOop.dart';
 
 /////////////////////////////////////////////////KODU ONAYLAMA//////////
 class SifreUnutmaKod extends StatefulWidget {
@@ -22,6 +23,8 @@ bool _isObscure2 = true; // Başlangıçta şifre gizli olacak
 class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -34,10 +37,10 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
               child: Stack(
                 children: [
                   //arkaplan resmi
-                  Positioned.fill(
+                  Positioned(
+                    top: 0,
                     child: Image.asset(
-                      'image/2SifreYenileme.png',
-                      fit: BoxFit.cover,
+                      'image/1.1.png',
                     ),
                   ),
                   //logo hizalama
@@ -46,22 +49,28 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                            height: 80,
-                            width: 80,
+                            height: screenHeight*0.25,
+                            width: screenWidth*0.20,
                             child: Image.asset("image/logo.png")
                         ),
-                        Text("Şifre Yenileme",
-                          style:
-                          TextStyle(
-                            fontFamily: "Rowdies",
-                            fontSize: 50,
-                            color: Colors.black87,
-                          ),
-                        ),
+
                       ],
                     ),
-                  ),
 
+                  ),
+                  SizedBox(
+                    height: screenHeight*0.5,
+                    child: Center(
+                      child: Text("Şifre Yenileme",
+                        style:
+                        TextStyle(
+                          color: Colors.black,
+                          fontFamily: "Poppins",
+                          fontSize: screenWidth * 0.09,
+                        ),
+                      ),
+                    ),
+                  ),
                   Center(
                     child: Form(
                       key: formKey2,
@@ -69,18 +78,18 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                         padding: const EdgeInsets.all(20.0),
                         child: Container(
 
-                          width: 400,
-                          height: 450,
+                          width: screenWidth*0.9,
+                          height: screenHeight*0.40,
                           padding: EdgeInsets.all(16.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16.0),
                             border: Border.all(
-                              color: Colors.deepPurpleAccent,
+                              color: Colorss.vibrantTeal,
                               width: 2.0,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.indigo.withOpacity(0.4), // Container arkaplan opaklık
+                                color: Colors.black12.withOpacity(0.1), // Container arkaplan opaklık
                                 blurRadius: 16.0,
                                 offset: Offset(0, 7),//golge boyutu
                               ),
@@ -109,12 +118,12 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                                         });
                                       },
                                     ),
-                                    Filcolorr: Colors.white,
-                                    colorr: Colors.white,
+                                    Filcolorr: Colors.transparent,
+                                    colorr: Colors.black54,
                                     suffixIcon: Icons.password_outlined, // Name simgesi başa eklenir
                                     hintText: "Şifre",
                                     hintStyle: TextStyle(
-                                      color: Colors.grey[600], // HintText rengi
+                                      color: Colorss.darkGray, // HintText rengi
                                     ),
                                   ),
                                   validator: (value) {
@@ -144,12 +153,12 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                                         });
                                       },
                                     ),
-                                    colorr: Colors.white,
-                                    Filcolorr: Colors.white,
+                                    colorr: Colors.black54,
+                                    Filcolorr: Colors.transparent,
                                     suffixIcon: Icons.password_outlined, // Name simgesi başa eklenir
                                     hintText: "Şifreyi Onayla",
                                     hintStyle: TextStyle(
-                                      color: Colors.grey[600], // HintText rengi
+                                      color: Colorss.darkGray, // HintText rengi
                                     ),
                                   ),
                                   obscureText: _isObscure,//sifre gorunur veya gorunmez yapma
@@ -194,30 +203,31 @@ class _SifreUnutmaKodState extends State<SifreUnutmaKod> {
                                     print("Girilen Kod: $kod");
                                     print("Yeni Şifre: $sifre");
                                   }
-                                  if (tfKod.text.isEmpty || tfPassword.text.isEmpty || tfPassword2.text.isEmpty) {
+                                  if (tfPassword.text.isEmpty || tfPassword2.text.isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text("Lütfen tüm alanları doldurunuz!"),
                                         duration: Duration(seconds: 2),
-                                        backgroundColor: Colors.deepPurpleAccent,
+                                        backgroundColor: Colorss.vibrantTeal,
                                       ),
                                     );
                                   }
-                                  if (tfPassword.text != tfPassword2) {
+                                  if (tfPassword.text != tfPassword2.text) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text("Lütfen Şifrelerin Eşleştiğinden Emin Olun!"),
                                         duration: Duration(seconds: 2),
-                                        backgroundColor: Colors.deepPurpleAccent,
+                                        backgroundColor: Colorss.vibrantTeal,
                                       ),
                                     );
                                   }
                                 },
-                                backgroundColor: Colors.white38,
+                                backgroundColor: Colorss.vibrantTeal,
                                 textColor: Colors.white,
+                                borderColor: Colors.black87,
+                                elevation: 5,
                                 borderRadius: 30,
-                                fontSize: 16,
-                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                                fontSize: screenWidth * 0.05,
                               ),
                             ],
                           ),
