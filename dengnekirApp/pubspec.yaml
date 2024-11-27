@@ -10,13 +10,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^2.2.3
   cupertino_icons: ^1.0.6
+  intl: ^0.18.1  # En güncel sürümü kullanabilirsiniz
+  flutter_localizations:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.14.1"
   flutter_lints: ^4.0.0
+
 
 flutter_launcher_icons:
   android: true
@@ -29,6 +35,7 @@ flutter:
 
   assets:
     - image/
+    - image/imagemainpersonel/
     - fonts/
 
   fonts:

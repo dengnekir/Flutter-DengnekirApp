@@ -77,14 +77,14 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              navigationIcon ? Icons.location_on_rounded : Icons.location_on,
+              navigationIcon ? Icons.location_off_sharp: Icons.location_on,
               size: 30,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              searchIcon ? Icons.search_sharp : Icons.saved_search,
+              searchIcon ? Icons.search_outlined : Icons.search_sharp,
               size: 30,
             ),
             label: "",
@@ -98,14 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              messageIcon ? Icons.chat_bubble_rounded : Icons.chat_bubble_outline_rounded,
+              messageIcon ? Icons.notifications_paused : Icons.notifications,
               size: 30,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              personIcon ? Icons.person : Icons.person_2_outlined,
+              personIcon ? Icons.person : Icons.person_2,
               size: 30,
             ),
             label: "",

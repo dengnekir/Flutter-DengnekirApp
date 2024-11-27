@@ -95,6 +95,7 @@ class CustomButton extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final FontWeight fontWeight;
   final String fontfamily;
+  final Color pressedColor;
 
 
   const CustomButton({
@@ -112,10 +113,12 @@ class CustomButton extends StatelessWidget {
     this.borderColor = Colors.transparent,
     this.elevation = 2.0,
     this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
+    this.pressedColor=Colorss.lightGray,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Center(
       child: SizedBox(
         width: width,
@@ -129,6 +132,8 @@ class CustomButton extends StatelessWidget {
               side: BorderSide(color: borderColor),
             ),
             elevation: elevation,
+          ).copyWith(
+            overlayColor: MaterialStateProperty.all(pressedColor as Color?),
           ),
 
           onPressed: onPressed,

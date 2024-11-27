@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../main.dart';
-import 'baslangic2-sifreunutma.dart';
-import 'baslangic3-singup.dart';
+import 'sifre-unutma.dart';
+import 'signup-kayitol.dart';
 import '../OOP/baslangicOop.dart';
 
 class baslangicLogin extends StatefulWidget {
@@ -205,7 +205,7 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                           String name = tfname.text;
                                           String pasw = tfpassword.text;
                                           print("Kullanıcı Adı:$name ve Şifresi $pasw");
-                                          Navigator.push(
+                                          Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => MainSayfa(),
@@ -226,7 +226,7 @@ class _baslangicLoginState extends State<baslangicLogin> {
                                   alignment: Alignment.center,
                                   child: GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
+                                      Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => sifreYenileme(),

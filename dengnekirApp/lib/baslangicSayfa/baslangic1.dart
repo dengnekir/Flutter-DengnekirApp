@@ -1,11 +1,11 @@
 
 import 'package:Vistopia/OOP/colors.dart';
-import 'package:Vistopia/baslangicSayfa/baslangic3-singup.dart';
+import 'package:Vistopia/baslangicSayfa/signup-kayitol.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'baslangic2-login.dart';
+import 'login-girisyapma.dart';
 import '../OOP/baslangicOop.dart';
 
 void main() {
@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               text: "Giriş Yap",
                               onPressed: () {
                                 print("login ekrana geçiliyor");
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(builder: (context) => baslangicLogin()),
                                 );
@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          Navigator.push(
+                                          Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => baslangicSingup(),

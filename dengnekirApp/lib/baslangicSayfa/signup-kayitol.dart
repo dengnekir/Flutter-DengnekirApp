@@ -1,13 +1,13 @@
 import 'package:Vistopia/OOP/colors.dart';
-import 'package:Vistopia/baslangicSayfa/baslangic2-login.dart';
+import 'package:Vistopia/baslangicSayfa/login-girisyapma.dart';
 import 'package:Vistopia/OOP/baslangicOop.dart';
-import 'package:Vistopia/baslangicSayfa/baslangicSKodOnay.dart';
+import 'package:Vistopia/baslangicSayfa/mail-tlf-onay-kullan.dart';
 import 'package:Vistopia/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import 'baslangic3-telefonNumara.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'ulke-telefon-kodlari.dart';
 
 class baslangicSingup extends StatefulWidget {
 
@@ -46,9 +46,18 @@ class _baslangicSingupstate extends State<baslangicSingup> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),//varsayılan tarih.
-      firstDate: DateTime(1950),//secilebilecek en eski tarih
-      lastDate: DateTime.now(),//secilebilecek en geç tarih
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime.now(),
+      builder: (BuildContext context, Widget? child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Theme(
+            data: ThemeData.light(),
+            child: child ?? const SizedBox.shrink(),
+          ),
+        );
+      },
     );
     if (picked != null) {
       setState(() {
@@ -123,7 +132,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                                       Filcolorr: Colors.transparent,//arkaplan rengi
                                       suffixIcon: Icons.person, // name simgesi başa eklenir
                                       hintText: "Kullanıcı Adı",
-                                      labeltext: "Hesap Oluştur",
+                                      labeltext: "Kullanıcı Adı",
                                       hasError: hasError,
                                     ),
                                     validator: (tfgirdisi){
@@ -359,7 +368,7 @@ class _baslangicSingupstate extends State<baslangicSingup> {
                               String birthday=tfbirthday.text;
                               String tlf=tfPhone.text;
                               print("Kullanıcı Adı:$name ve Şifresi $pasw . mail:$mail , doğum tarihi: $birthday, telefonu:$tlf");
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
                                   MainSayfa()
                               ));
                             }

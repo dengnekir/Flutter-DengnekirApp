@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-import 'baslangic2-SifreDegistirme.dart';
-import 'baslangic3-singup.dart';
+import '!sifre-degistirme.dart';
+import 'signup-kayitol.dart';
 import '../OOP/baslangicOop.dart';
-import 'baslangic3-telefonNumara.dart';
+import 'ulke-telefon-kodlari.dart';
 class sifreYenileme extends StatefulWidget {
 
   @override
